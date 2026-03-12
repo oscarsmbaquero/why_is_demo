@@ -11,6 +11,10 @@
       "destination": "/api/chat.js"
     },
     {
+      "source": "/api/n8n",
+      "destination": "/api/n8n.js"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
