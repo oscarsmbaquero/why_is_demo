@@ -1,0 +1,16 @@
+<div  *ngIf="!cookiesAccepted"  class="cookie-banner">
+  <p>
+    Usamos cookies para mejorar tu experiencia. Puedes aceptarlas o rechazarlas. Si continúas navegando, asumiremos que las aceptas.
+    <br>
+    <a routerLink="/cookies-policy" class="cookie-link">Política de Cookies</a> | 
+    <a routerLink="/privacy-policy" class="cookie-link">Política de Privacidad</a>
+  </p>
+  <div class="button-container">
+    <button class="boton" style="width: 150px" (click)="acceptCookies()">
+      ACEPTAR
+    </button>
+    <button class="boton" style="width: 150px" (click)="rejectCookies()">
+      RECHAZAR
+    </button>
+  </div>
+</div>

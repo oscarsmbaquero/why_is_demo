@@ -1,0 +1,60 @@
+<section class="services-section container-fluid p-md-5">
+  <!-- TÍTULO -->
+  <div class="row mb-3 mt-5">
+    <div class="col text-center">
+      <h4 class="section-title"
+      data-aos="fade-up"
+      >
+        {{ 'SERVICIOS_IA.TITULO' | translate }}
+      </h4>
+      <!-- <p class="section-subtitle">
+        Nivel técnico para empresas no especializadas
+      </p> -->
+    </div>
+  </div>
+
+  <!-- SERVICIOS -->
+  <div
+    class="row service-item align-items-center mb-5"
+    *ngFor="let service of visibleServices; let i = index"
+    [ngClass]="{ reverse: i % 2 !== 0 }"
+    data-aos="fade-up"
+    [attr.data-aos-delay]="i * 100"
+  >
+
+    <!-- IMAGEN -->
+    <div class="col-md-6 service-image p-2 p-md-5"
+         data-aos="fade-right"
+         [attr.data-aos-delay]="i * 100 + 100">
+      <img
+        [src]="service.image"
+        [alt]="service.title"
+        class="img-fluid rounded"
+      />
+    </div>
+
+    <!-- TEXTO -->
+    <div class="col-md-6 service-content"
+         data-aos="fade-left"
+         [attr.data-aos-delay]="i * 100 + 100">
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+
+      <ul>
+        <li *ngFor="let app of service.applications">
+          {{ app }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col text-center pt-5 pb-2">
+    <button
+      class="light-button"
+      (click)="toggleServices()"
+    >
+      {{ showAllServices ? ('SERVICIOS_IA.VER_MENOS' | translate) : ('SERVICIOS_IA.VER_MAS' | translate) }}
+    </button>
+  </div>
+</div>
+</section>

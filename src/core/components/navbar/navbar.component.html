@@ -1,0 +1,192 @@
+<!-- style="background-color: rgb(20, 20, 20)" -->
+<nav class="navbar navbar-expand-md fixed-top border-custom">
+  <div class="container-fluid">
+    <!-- <a class="navbar-brand" href="#">
+      &nbsp;<span class="text-info">ZSS</span>&nbsp;<span
+        class="text-danger text-info"
+        >IA</span
+      >
+    </a> -->
+    <!-- <img src="../../../assets/images/logo2.png" width="120px" /> -->
+     <!-- <app-popup></app-popup> -->
+       <img src="../../../assets/images/logo.png" width="100px" class="ps-3 pt-1">
+       <span class="ms-1">DEMO</span>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      style="border: none; background: transparent"
+    >
+      <svg viewBox="0 0 32 32" width="32" height="32">
+        <path
+          class="line line-top-bottom"
+          d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
+        ></path>
+        <path class="line" d="M7 16 27 16"></path>
+      </svg>
+    </button>
+    <div
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="offcanvasNavbar"
+      aria-labelledby="offcanvasNavbarLabel"
+      [ngClass]="themeService.theme() === 'Dark' ? 'offcanvas-dark' : 'offcanvas-light'"
+      
+    >
+      <div class="offcanvas-header">
+        <!-- <img src="../../../assets/images/logo2.png" width="200px" /> -->
+        <button         
+          type="button"
+          class="btn-close custom-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <!--primera lista-->
+      <div class="offcanvas-body" style="height: 60px;">
+        <div class="d-md-none">
+          <img src="../../../assets/images/logo.png" width="100px"/>
+        </div>
+        <ul class="navbar-nav ms-auto my-2 my-lg-0" style="padding: 15px">
+          <ng-container *ngIf="authService.isLoggedIn()">
+          <li
+            class="nav-item"
+            (click)="selectOption('inicio')"
+            [class.selected]="selectedOption === 'inicio'"
+            [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.HOME" | translate}}</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+          <!-- <hr class="dropdown-divider" /> -->
+            <li
+            class="nav-item"
+            (click)="selectOption('servicios-ia')"
+            [class.selected]="selectedOption === 'servicios-ia'"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.SERVICIOS_IA" | translate}}</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+          <li
+            class="nav-item"
+            (click)="selectOption('software')"
+            [class.selected]="selectedOption === 'software'"
+          >
+            <a
+              class="nav-link"
+              href="javascript:void(0)"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.SOFTWARE" | translate}}</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+          <li
+            class="nav-item"
+            (click)="selectOption('about')"
+            [class.selected]="selectedOption === 'about'"
+          >
+            <a
+              class="nav-link"
+              href="javascript:void(0)"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.ABOUT" | translate}}</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+           <hr class="dropdown-divider" />
+          <li
+            (click)="selectOption('contact')"
+            [class.selected]="selectedOption === 'contact'"
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.CONTACTO" | translate}}</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+          <li>
+        <!-- <div class="d-flex align-items-center">
+          <button 
+            type="button"
+            class="btn btn-sm"
+            [class.active]="currentLanguage === 'es'"
+            (click)="useLanguage('es')"
+            data-bs-dismiss="offcanvas"
+          >
+            ES
+          </button>
+          <span class="text-muted" style="margin-top: -6px;">|</span>
+          <button 
+            type="button"
+            class="btn btn-sm"
+            [class.active]="currentLanguage === 'en'"
+            (click)="useLanguage('en')"
+            data-bs-dismiss="offcanvas"
+          >
+            EN
+          </button>
+        </div> -->
+        </li>
+          <li class="navbar-divider"></li>
+          </ng-container>
+          <li class="nav-item login-item">
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault(); logoutUser()"
+              style="cursor: pointer"
+              data-bs-dismiss="offcanvas"
+            >
+              @if (authService.user()?.image) {
+                <img [src]="authService.user()?.image" alt="avatar" class="nav-avatar" referrerpolicy="no-referrer" />
+              } @else {
+                <i class="fas fa-user-circle"></i>
+              }
+              <span class="navbar-uppercase">Cerrar sesión</span>
+            </a>
+          </li>
+        </ul>
+        
+        <!-- Selector de idioma -->
+      </div>
+    </div>
+  </div>
+</nav>

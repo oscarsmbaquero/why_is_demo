@@ -1,0 +1,68 @@
+<div class="login-container">
+  <div class="login-card">
+
+    @if (!authService.isLoggedIn()) {
+      <div class="login-header">
+        <!-- <h3>Iniciar sesión</h3> -->
+      </div>
+      <div class="login-body">
+        <form (ngSubmit)="onSubmit()" class="login-form">
+          <div class="form-group">
+            <label for="username">Usuario</label>
+            <input
+              id="username"
+              type="text"
+              [(ngModel)]="username"
+              name="username"
+              placeholder="Tu usuario"
+              autocomplete="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input
+              id="password"
+              type="password"
+              [(ngModel)]="password"
+              name="password"
+              placeholder="Tu contraseña"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+          @if (authService.error()) {
+            <p class="error-msg">{{ authService.error() }}</p>
+          }
+          <div class="row mt-4">
+            <div class="d-flex justify-content-center">
+          <button type="submit" class="btn-login" [disabled]="authService.loading()">
+            @if (authService.loading()) {
+              <span class="spinner"></span> Entrando...
+            } @else {
+              Entrar
+            }
+          </button>
+          </div>
+          </div>
+        </form>
+      </div>
+    } @else {
+      <div class="login-header">
+        <h3>Mi cuenta</h3>
+      </div>
+      <div class="login-body user-info">
+        @if (authService.user()?.image) {
+          <img [src]="authService.user()?.image" alt="avatar" class="user-avatar" referrerpolicy="no-referrer" />
+        } @else {
+          <div class="user-icon">
+            <i class="fas fa-user-circle"></i>
+          </div>
+        }
+        <p class="user-name">{{ authService.user()?.user }}</p>
+        <p class="user-email">{{ authService.user()?.mail }}</p>
+        <button class="btn-logout" (click)="logout()">Cerrar sesión</button>
+      </div>
+    }
+  </div>
+</div>

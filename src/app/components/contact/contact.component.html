@@ -1,0 +1,118 @@
+<div class="row fondo-contact mb-5">
+  <div class="col-12 col-xl-6 text-center mx-auto">
+    <h3 class="py-2"
+    >
+      {{ 'CONTACT.TITULO' | translate }}
+    </h3>
+    <h6>{{ 'CONTACT.SUBTITULO' | translate }}</h6><span style="font-weight:bold; text-decoration: underline;">+34 608722702</span>
+    
+    <!-- Enlace para establecer cita -->
+    <div class="appointment-link-container mt-3">
+      <a href="javascript:void(0)" class="appointment-link" (click)="toggleCalendarFields()">
+        @if(showCalendarFields) {
+          ❌ Cancelar cita
+        } @else {
+          {{ 'CONTACT.CITA.LINK_TEXT' | translate }}
+        }
+      </a>
+    </div>
+    
+    <div class="row justify-content-around mt-5">
+    <div class=" col-12 col-md-9">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+        <!-- Campos de calendario (mostrar solo si showCalendarFields es true) -->
+        @if(showCalendarFields) {
+          <div class="input-wrapper">
+            <span class="input-icon">📅</span>
+            <input 
+              type="date" 
+              id="fecha" 
+              formControlName="fecha" 
+              [min]="getTodayDate()"
+              class="input-with-icon"
+            />
+            @if(contactForm.get('fecha')?.invalid && contactForm.get('fecha')?.touched) {
+              <div class="error-message">La cita debe ser en horario laboral: lunes a viernes, de 09:00 a 19:00.</div>
+            }
+          </div>
+          
+          <div class="input-wrapper">
+            <span class="input-icon">🕒</span>
+            <input 
+              type="time" 
+              id="hora" 
+              formControlName="hora" 
+              min="09:00"
+              max="19:00"
+              class="input-with-icon"
+            />
+            @if(contactForm.get('hora')?.invalid && contactForm.get('hora')?.touched) {
+              <div class="error-message">La cita debe ser en horario laboral: lunes a viernes, de 09:00 a 19:00.</div>
+            }
+          </div>
+        }
+        
+        <div class="input-wrapper">
+          <span class="input-icon">👤</span>
+          <input type="text" id="nombre" formControlName="nombre" [placeholder]="'CONTACT.FORM.NOMBRE_PLACEHOLDER' | translate" class="input-with-icon" />
+          @if(contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched) {
+            <div class="error-message">{{ 'CONTACT.FORM.NOMBRE_ERROR' | translate }}</div>
+          }
+        </div>
+          <div class="input-wrapper">
+          <span class="input-icon">📱</span>
+          <input type="tel" id="telefono" formControlName="telefono" [placeholder]="'CONTACT.FORM.TELEFONO_PLACEHOLDER' | translate" class="input-with-icon" />
+          @if(contactForm.get('telefono')?.invalid && contactForm.get('telefono')?.touched) {
+            <div class="error-message">{{ 'CONTACT.FORM.TELEFONO_ERROR' | translate }}</div>
+          }
+        </div>     
+        <div class="input-wrapper">
+          <span class="input-icon">✉️</span>
+          <input type="email" id="email" formControlName="email" [placeholder]="'CONTACT.FORM.EMAIL_PLACEHOLDER' | translate" class="input-with-icon" />
+          @if(contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
+            <div class="error-message">{{ 'CONTACT.FORM.EMAIL_ERROR' | translate }}</div>
+          }
+        </div>      
+        <div class="input-wrapper">
+          <span class="input-icon textarea-icon">📝</span>
+          <textarea id="mensaje" formControlName="mensaje" [placeholder]="'CONTACT.FORM.MENSAJE_PLACEHOLDER' | translate" rows="5" class="input-with-icon"></textarea>
+          @if(contactForm.get('mensaje')?.invalid && contactForm.get('mensaje')?.touched) {
+            <div class="error-message">{{ 'CONTACT.FORM.MENSAJE_ERROR' | translate }}</div>
+          }
+        </div>
+        
+        @if(themeService.theme() === 'Dark'){
+          <button type="submit" [disabled]="contactForm.invalid || isSubmitting">
+            @if(isSubmitting) {
+              <span>{{ 'CONTACT.FORM.SENDING' | translate }}</span>
+            } @else {
+              <span>{{ 'CONTACT.FORM.BUTTON' | translate }}</span>
+            }
+          </button>
+        }@else {
+          <button type="submit" [disabled]="contactForm.invalid || isSubmitting" class="light-button">
+            @if(isSubmitting) {
+              <span>{{ 'CONTACT.FORM.SENDING' | translate }}</span>
+            } @else {
+              <span>{{ 'CONTACT.FORM.BUTTON' | translate }}</span>
+            }
+          </button>
+        }
+        
+        @if(submitSuccess) {
+          <div class="success-message">{{ 'CONTACT.FORM.SUCCESS_MESSAGE' | translate }}</div>
+        }
+        
+        @if(submitError) {
+          <div class="error-message">{{ 'CONTACT.FORM.ERROR_MESSAGE' | translate }}</div>
+        }
+        
+        <p class="privacy-text mt-3">
+          {{ 'CONTACT.PRIVACIDAD_TEXTO' | translate }} 
+          <a routerLink="/privacy-policy" class="privacy-link">{{ 'CONTACT.PRIVACIDAD_LINK' | translate }}</a>.
+        </p>
+      </form>
+    </div>
+    </div>
+  </div>
+</div>

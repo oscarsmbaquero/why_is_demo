@@ -1,0 +1,105 @@
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%; 
+    /* background: rgba(255, 255, 255, 0.1); */
+    background:black;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 10px 20px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    z-index: 1000;
+    border-radius: 8px; 
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    box-sizing: border-box;
+    max-width: 100vw;
+    overflow-x: hidden;
+    font-family: "Albert Sans", sans-serif;
+  }
+  
+  .cookie-banner p {
+    flex: 1; 
+    margin: 0; 
+    text-align: left; 
+    color: white;
+  }
+
+  .cookie-link {
+    color: #4a9eff;
+    text-decoration: underline;
+    margin: 0 5px;
+    font-size: 0.9em;
+    transition: color 0.2s ease;
+  }
+
+  .cookie-link:hover {
+    color: #6ab0ff;
+    text-decoration: none;
+  }
+  
+  .cookie-banner button {
+    margin-left: 10px; 
+    background-color: rgba(255, 255, 255, 0.9);
+    color: black;
+    padding: 4px; 
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 150px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+  }
+  
+  .cookie-banner button:hover {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+  
+  @media (max-width: 768px) {
+    .cookie-banner {
+      padding: 15px 10px; 
+      flex-direction: column;
+      align-items: center; 
+      text-align: center; 
+      justify-content: center;
+      border-radius: 0;
+      left: 0;
+      right: 0;
+      gap: 10px;
+    }
+  
+    .cookie-banner p {
+      margin-bottom: 5px;
+      padding: 0 5px;
+      width: 100%;
+      text-align: center;
+    }
+  
+    .cookie-banner button {
+      margin: 0; 
+      width: 120px;
+      flex-shrink: 0;
+    }
+
+    .button-container {
+      flex-direction: row;
+      justify-content: center;
+    }
+    }
+  
+  

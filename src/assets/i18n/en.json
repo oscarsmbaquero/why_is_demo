@@ -1,0 +1,241 @@
+{
+  "NAVBAR":{
+    "HOME": "Home",
+    "SERVICIOS_IA": "AI Solutions",
+    "SOFTWARE": "Software",
+    "ABOUT": "About Us",
+    "SOBRE_MI": "About Us",
+    "CONTACTO": "Contact",
+    "LOGIN": "Sign in"
+  },
+  "INICIO":{
+    "TITULO": "CUSTOMIZED AI SOLUTIONS",
+    "SUBTITULO": "CUSTOM SOFTWARE DEVELOPMENT",
+    "DESCRIPCION": "We help companies to Transform Digitally through AI.",
+    "LISTA": {
+      "DESARROLLO_SOFTWARE": "Software development",
+      "ASISTENTES_VIRTUALES": "Virtual assistants",
+      "AUTOMATIZACION": "Process automation",
+      "OPTIMIZACION": "Internal process optimization",
+      "DIAGNOSTICO": "AI opportunity diagnosis"
+    }
+  },
+  "SERVICIOS_IA": {
+    "TITULO": "AI Solutions",
+    "VER_MAS": "See more services",
+    "VER_MENOS": "See less",
+    "SERVICIOS": [
+      {
+        "TITLE": "AI Process Automation",
+        "DESCRIPTION": "Implementation of systems that automate repetitive tasks by combining business rules with artificial intelligence capabilities.",
+        "APPLICATIONS": [
+          "Automatic invoice registration",
+          "Email classification",
+          "Order management",
+          "Database updates"
+        ]
+      },
+      {
+        "TITLE": "Virtual Assistants (Enterprise Chatbots)",
+        "DESCRIPTION": "Development of digital assistants capable of maintaining conversations with customers or employees using natural language.",
+        "APPLICATIONS": [
+          "Customer service",
+          "Internal support",
+          "Appointment management",
+          "Commercial information"
+        ]
+      },
+      {
+        "TITLE": "Intelligent Internal Documentation Query",
+        "DESCRIPTION": "Systems that allow consulting company documents through natural language questions.",
+        "APPLICATIONS": [
+          "Procedure search",
+          "Price consultation",
+          "Internal policy access",
+          "New staff support"
+        ]
+      },
+      {
+        "TITLE": "Automatic Document Processing",
+        "DESCRIPTION": "Solutions that read digital or scanned documents and automatically extract relevant information.",
+        "APPLICATIONS": [
+          "Invoices",
+          "Delivery notes",
+          "Contracts",
+          "Technical reports"
+        ]
+      },
+      {
+        "TITLE": "Data Analysis and Report Generation",
+        "DESCRIPTION": "Use of AI tools to analyze business data and generate clear summaries on trends and results.",
+        "APPLICATIONS": [
+          "Sales analysis",
+          "Expense control",
+          "Customer evolution",
+          "Product results"
+        ]
+      },
+      {
+        "TITLE": "Demand and Results Prediction",
+        "DESCRIPTION": "Models that use historical data to estimate future behaviors and support planning.",
+        "APPLICATIONS": [
+          "Sales forecasting",
+          "Stock needs",
+          "Workload",
+          "Staff planning"
+        ]
+      },
+      {
+        "TITLE": "Error and Anomaly Detection",
+        "DESCRIPTION": "Systems that identify inconsistencies or unusual patterns in company data.",
+        "APPLICATIONS": [
+          "Duplicate invoices",
+          "Unusual expenses",
+          "Accounting errors",
+          "Administrative incidents"
+        ]
+      },
+      {
+        "TITLE": "Automatic Text and Content Generation",
+        "DESCRIPTION": "Tools that help write documents in an assisted way, maintaining coherence and quality.",
+        "APPLICATIONS": [
+          "Reports",
+          "Quotes",
+          "Commercial emails",
+          "Product descriptions"
+        ]
+      },
+      {
+        "TITLE": "Enterprise Automatic Translation",
+        "DESCRIPTION": "Translation systems that allow working in multiple languages with terminological coherence.",
+        "APPLICATIONS": [
+          "Documentation",
+          "International service",
+          "Catalogs",
+          "Communications"
+        ]
+      }
+    ]
+  },
+  "SOFTWARE": {
+    "TITULO": "Custom software for your business",
+    "DESCRIPCION": "We design and develop scalable, secure digital solutions designed to grow with you.",
+    "PLUS_TITULO": "Solid software + Well-applied AI",
+    "PLUS_DESCRIPCION": "We first build a reliable software foundation and add artificial intelligence only where it provides real value.",
+    "CTA_BUTTON": "Tell us your software idea",
+    "CARDS": [
+      {
+        "ICON": "🔄",
+        "TITLE": "Complete lifecycle",
+        "DESCRIPTION": "From initial analysis to maintenance, we accompany your project at every phase."
+      },
+      {
+        "ICON": "🧩",
+        "TITLE": "Custom development",
+        "DESCRIPTION": "Web applications and systems adapted to your real processes, without generic templates."
+      },
+      {
+        "ICON": "🔗",
+        "TITLE": "Modern technologies",
+        "DESCRIPTION": "Development with Angular, Node.js and MongoDB for robust and scalable web applications."
+      },
+      {
+        "ICON": "📊",
+        "TITLE": "Internal tools",
+        "DESCRIPTION": "Control panels, dashboards and clear and efficient internal systems."
+      },
+      {
+        "ICON": "🔒",
+        "TITLE": "Scalability and security",
+        "DESCRIPTION": "Clean code, robust architectures and continuous maintenance."
+      },
+      {
+        "ICON": "🔌",
+        "TITLE": "API integrations",
+        "DESCRIPTION": "We connect your software with external services, CRMs, ERPs and business tools."
+      },
+      {
+        "ICON": "📱",
+        "TITLE": "Responsive design",
+        "DESCRIPTION": "Interfaces adapted to all devices: mobile, tablet and desktop."
+      },
+      {
+        "ICON": "⚡",
+        "TITLE": "Optimization and performance",
+        "DESCRIPTION": "Fast and efficient applications that improve user experience."
+      }
+    ]
+  },
+  "CONTACT": {
+    "TITULO": "Do you have a project in mind?",
+    "SUBTITULO": "Tell us what you need and let's start working together. You can also call us at",
+    "PRIVACIDAD_TEXTO": "By submitting this form, you agree that your data will be used to contact you about your inquiry. See our",
+    "PRIVACIDAD_LINK": "privacy policy",
+    "FORM": {
+      "NOMBRE_PLACEHOLDER": "Complete name",
+      "EMAIL_PLACEHOLDER": "your@email.com",
+      "TELEFONO_PLACEHOLDER": "Your phone (e.g. 000 000 000)",
+      "MENSAJE_PLACEHOLDER": "Tell us what kind of project you need...",
+      "NOMBRE_ERROR": "Name is required.",
+        "TELEFONO_ERROR": "Phone is required.",
+      "EMAIL_ERROR": "Please enter a valid email.",
+      "MENSAJE_ERROR": "Message is required.",
+      "BUTTON": "Send",
+      "SENDING": "Sending...",
+      "SUCCESS_MESSAGE": "Message sent successfully! We will contact you soon.",
+      "ERROR_MESSAGE": "Error sending message. Please try again."
+    },
+    "CITA": {
+      "LINK_TEXT": "📅 Prefer to schedule an appointment?",
+      "MODAL_TITULO": "Schedule an appointment",
+      "MODAL_DESCRIPCION": "Select your preferred date and time for our meeting",
+      "FECHA_LABEL": "Date",
+      "HORA_LABEL": "Time",
+      "CONFIRMAR": "Confirm appointment",
+      "CANCELAR": "Cancel",
+      "FECHA_ERROR": "Please select a date.",
+      "HORA_ERROR": "Please select a time.",
+      "SUCCESS": "Appointment confirmed! We will contact you to confirm the details."
+    }
+  },
+  "ABOUT": {
+    "BADGE": "Who We Are",
+    "TITLE": "Driving digital transformation",
+    "SUBTITLE": "We are a consultancy specialized in software and artificial intelligence, committed to revolutionizing the way companies integrate technology into their business DNA.",
+    "MISSION_TITLE": "Our Mission",
+    "MISSION_TEXT": "Transform business challenges into technological opportunities, creating solutions that generate real and lasting value for our clients.",
+    "VISION_TITLE": "Our Vision",
+    "VISION_TEXT": "To be the reference technological partner for organizations seeking to lead innovation in their respective markets.",
+    "PHILOSOPHY_TITLE": "Our Philosophy",
+    "PHILOSOPHY_TEXT_1": "We believe in technology with purpose. We don't develop for the sake of developing, but rather every line of code, every AI algorithm, has a clear objective: <strong>to make people's lives easier and enhance the capabilities of organizations</strong>.",
+    "PHILOSOPHY_TEXT_2": "Our minimalist approach is not just aesthetic, it's functional. We eliminate unnecessary complexity to deliver elegant, efficient and easy-to-maintain solutions.",
+    "VALUES_TITLE": "Our Values",
+    "VALUE_1_TITLE": "Technical Excellence",
+    "VALUE_1_TEXT": "Clean code, scalable architectures and industry best practices",
+    "VALUE_2_TITLE": "Total Transparency",
+    "VALUE_2_TEXT": "Clear communication, realistic deadlines and honesty at every stage of the project",
+    "VALUE_3_TITLE": "Responsible Innovation",
+    "VALUE_3_TEXT": "We adopt new technologies with criteria, evaluating their impact and sustainability",
+    "VALUE_4_TITLE": "Customer at the Center",
+    "VALUE_4_TEXT": "Your success is our success. We work as an extension of your team",
+    "APPROACH_TITLE": "How We Work",
+    "STEP_1_TITLE": "We Listen",
+    "STEP_1_TEXT": "We understand your business, your challenges and your objectives before proposing any solution",
+    "STEP_2_TITLE": "We Design",
+    "STEP_2_TEXT": "We create technological strategies aligned with your business vision",
+    "STEP_3_TITLE": "We Develop",
+    "STEP_3_TEXT": "We implement solutions with agile methodologies and incremental deliveries",
+    "STEP_4_TITLE": "We Evolve",
+    "STEP_4_TEXT": "We accompany the growth of your solution with continuous support and improvements",
+    "STAT_1_NUMBER": "100%",
+    "STAT_1_LABEL": "Own Code",
+    "STAT_2_NUMBER": "24/7",
+    "STAT_2_LABEL": "Available Support",
+    "STAT_3_NUMBER": "∞",
+    "STAT_3_LABEL": "Continuous Improvement"
+  },
+  "FOOTER": {
+    "PRIVACY": "Privacy",
+    "COOKIES": "Cookies"
+  }
+}

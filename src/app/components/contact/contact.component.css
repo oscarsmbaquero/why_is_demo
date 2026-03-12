@@ -1,0 +1,169 @@
+*{
+  font-family: "Albert Sans", sans-serif;
+}
+h2,p {
+    color: white;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: system-ui, sans-serif;
+  margin-bottom: 25px;
+}
+
+
+
+.input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 1.5rem;
+  transform: translateY(-50%);
+  font-size: 1rem;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input-icon.textarea-icon {
+  top: 0.75rem;
+  transform: none;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  background-color: transparent;
+  color: black;
+  transition: border-color 0.2s ease;
+}
+
+input.input-with-icon {
+  padding-left: 2.5rem;
+}
+
+input[type="date"].input-with-icon,
+input[type="time"].input-with-icon {
+  padding-left: 2.5rem;
+  color-scheme: light;
+}
+
+textarea.input-with-icon {
+  padding-left: 2.5rem;
+}
+
+input:focus,
+textarea:focus {
+  border-color:  red;
+  outline: none;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.success-message {
+  color: #2e7d32;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  border-left: 4px solid #2e7d32;
+}
+
+.contact-description {
+  font-size: 0.95rem;
+  color: #555;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.privacy-text {
+  font-size: 0.8rem;
+  color: #666;
+  text-align: center;
+  line-height: 1.4;
+  margin-top: 1rem;
+}
+
+.privacy-link {
+  color: #d32f2f;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.privacy-link:hover {
+  color: #b71c1c;
+}
+
+/* .light-button{
+  border: 1px solid grey;
+  color: grey;
+} */
+
+.dark{
+  color: white
+}
+.light{
+  color: black;
+}
+
+.fondo-contact{
+    /* background-color: #f0f2f5; */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.95)), url("../../../assets/images/logo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 80vh;
+  padding: 20px 20px;
+}
+
+/* Media query para dispositivos móviles */
+@media (max-width: 768px) {
+  .fondo-contact {
+    background-attachment: scroll; /* Permite que el fondo se desplace */
+    padding: 20px 15px; /* Padding reducido para móviles */
+    background-size: contain; /* Ajusta la imagen para que sea completamente visible */
+  }
+}
+
+/* Estilos para enlace de cita */
+.appointment-link-container {
+  margin: 1rem 0;
+}
+
+.appointment-link {
+  color: #d32f2f;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  padding: 0.5rem 0;
+  cursor: pointer;
+}
+
+.appointment-link:hover {
+  color: #b71c1c;
+  text-decoration: underline;
+}

@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeicons/primeicons.css";
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;700&display=swap");
+@import 'aos/dist/aos.css';
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  max-width: 100vw;
+}
+body {
+  
+  margin: 0;
+  overflow-x: hidden;
+  /* font-family: "Orbitron", sans-serif; */
+  /* font-family: cursive; */
+}
+
+/* Fix para overflow causado por Bootstrap row */
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.container, .container-fluid {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* body.dark .card {
+  background-color: #222;
+  color: white;
+}
+
+body.light .card {
+  background-color: white;
+  color: black;
+} */
+
+
+
+
+.button {
+    margin-top: 25px;
+    width: 60%;
+    padding: 10px;
+    background-color: #007bff !important;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+
+
+body.Dark {
+  background-color: black;
+  color: white;
+}
+
+body.Light {
+  background-color: white;
+  color: black;
+}
+
+body.Dark .navbar {
+  background-color: black !important;
+  color: white;
+
+  span {
+    color: white !important;
+  }
+}
+
+body.Light .navbar {
+  margin-top: 10px;
+  background-color: white !important;
+  color: black;
+
+  span {
+    color: black !important;
+  }
+}
+
+
+.fixed-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1050 !important;
+  background-color: #212529 !important;
+  color: white !important;
+  padding: 1rem 1.5rem !important;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+/* botones  */
+button {
+  align-self: flex-start;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  border: 5px solid white;
+  background-color: transparent;
+  /* color: white; */
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #111;
+  color: #fff;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.light-button{
+  border: 1px solid grey;
+  color: grey;
+}

@@ -1,0 +1,241 @@
+{
+  "NAVBAR":{
+    "HOME": "Inicio",
+    "SERVICIOS_IA": "Soluciones IA",
+    "SOFTWARE": "Software",
+    "ABOUT": "Sobre Nosotros",
+    "SOBRE_MI": "Sobre Nosotros",
+    "CONTACTO": "Contacto",
+    "LOGIN": "Iniciar sesión"
+  },
+  "INICIO": {
+    "TITULO": "SOLUCIONES IA PERSONALIZADAS",
+    "SUBTITULO": "DESARROLLO DE SOFTWARE A MEDIDA",
+    "DESCRIPCION": "Ayudamos a las empresas a Transformarse Digitalmente a través de la IA.",
+    "LISTA": {
+      "DESARROLLO_SOFTWARE": "Desarrollo software",
+      "ASISTENTES_VIRTUALES": "Asistentes virtuales",
+      "AUTOMATIZACION": "Automatización de procesos",
+      "OPTIMIZACION": "Optimización de procesos",
+      "DIAGNOSTICO": "Diagnóstico de oportunidades IA"
+    }
+  },
+  "SERVICIOS_IA": {
+    "TITULO": "Soluciones IA",
+    "VER_MAS": "Ver más servicios",
+    "VER_MENOS": "Ver menos",
+    "SERVICIOS": [
+      {
+        "TITLE": "Automatización de procesos con IA",
+        "DESCRIPTION": "Implementación de sistemas que permiten automatizar tareas repetitivas combinando reglas de negocio con capacidades de inteligencia artificial.",
+        "APPLICATIONS": [
+          "Registro automático de facturas",
+          "Clasificación de correos",
+          "Gestión de pedidos",
+          "Actualización de bases de datos"
+        ]
+      },
+      {
+        "TITLE": "Asistentes virtuales (chatbots empresariales)",
+        "DESCRIPTION": "Desarrollo de asistentes digitales capaces de mantener conversaciones con clientes o empleados utilizando lenguaje natural.",
+        "APPLICATIONS": [
+          "Atención al cliente",
+          "Soporte interno",
+          "Gestión de citas",
+          "Información comercial"
+        ]
+      },
+      {
+        "TITLE": "Consulta inteligente de documentación interna",
+        "DESCRIPTION": "Sistemas que permiten consultar documentos propios de la empresa mediante preguntas en lenguaje natural.",
+        "APPLICATIONS": [
+          "Búsqueda de procedimientos",
+          "Consulta de precios",
+          "Acceso a políticas internas",
+          "Soporte a personal nuevo"
+        ]
+      },
+      {
+        "TITLE": "Procesamiento automático de documentos",
+        "DESCRIPTION": "Soluciones que leen documentos digitales o escaneados y extraen automáticamente la información relevante.",
+        "APPLICATIONS": [
+          "Facturas",
+          "Albaranes",
+          "Contratos",
+          "Informes técnicos"
+        ]
+      },
+      {
+        "TITLE": "Análisis de datos y generación de informes",
+        "DESCRIPTION": "Uso de herramientas de IA para analizar datos empresariales y generar resúmenes claros sobre tendencias y resultados.",
+        "APPLICATIONS": [
+          "Análisis de ventas",
+          "Control de gastos",
+          "Evolución de clientes",
+          "Resultados por producto"
+        ]
+      },
+      {
+        "TITLE": "Predicción de demanda y resultados",
+        "DESCRIPTION": "Modelos que utilizan datos históricos para estimar comportamientos futuros y apoyar la planificación.",
+        "APPLICATIONS": [
+          "Previsión de ventas",
+          "Necesidades de stock",
+          "Cargas de trabajo",
+          "Planificación de personal"
+        ]
+      },
+      {
+        "TITLE": "Detección de errores y anomalías",
+        "DESCRIPTION": "Sistemas que identifican incoherencias o patrones inusuales en los datos de la empresa.",
+        "APPLICATIONS": [
+          "Facturas duplicadas",
+          "Gastos fuera de lo habitual",
+          "Errores contables",
+          "Incidencias administrativas"
+        ]
+      },
+      {
+        "TITLE": "Generación automática de textos y contenidos",
+        "DESCRIPTION": "Herramientas que ayudan a redactar documentos de forma asistida, manteniendo coherencia y calidad.",
+        "APPLICATIONS": [
+          "Informes",
+          "Presupuestos",
+          "Correos comerciales",
+          "Descripciones de productos"
+        ]
+      },
+      {
+        "TITLE": "Traducción automática empresarial",
+        "DESCRIPTION": "Sistemas de traducción que permiten trabajar en varios idiomas con coherencia terminológica.",
+        "APPLICATIONS": [
+          "Documentación",
+          "Atención internacional",
+          "Catálogos",
+          "Comunicaciones"
+        ]
+      }
+    ]
+  },
+  "SOFTWARE": {
+    "TITULO": "Software a medida para tu negocio",
+    "DESCRIPCION": "Diseñamos y desarrollamos soluciones digitales escalables, seguras y pensadas para crecer contigo.",
+    "PLUS_TITULO": "Software sólido + IA bien aplicada",
+    "PLUS_DESCRIPCION": "Construimos primero una base de software fiable y añadimos inteligencia artificial solo donde aporta valor real.",
+    "CTA_BUTTON": "Cuéntanos tu idea de software",
+    "CARDS": [
+      {
+        "ICON": "🔄",
+        "TITLE": "Ciclo de vida completo",
+        "DESCRIPTION": "Desde el análisis inicial hasta el mantenimiento, acompañamos tu proyecto en cada fase."
+      },
+      {
+        "ICON": "🧩",
+        "TITLE": "Desarrollo a medida",
+        "DESCRIPTION": "Aplicaciones web y sistemas adaptados a tus procesos reales, sin plantillas genéricas."
+      },
+      {
+        "ICON": "🔗",
+        "TITLE": "Tecnologías modernas",
+        "DESCRIPTION": "Desarrollo con Angular, Node.js y MongoDB para aplicaciones web robustas y escalables."
+      },
+      {
+        "ICON": "📊",
+        "TITLE": "Herramientas internas",
+        "DESCRIPTION": "Paneles de control, dashboards y sistemas internos claros y eficientes."
+      },
+      {
+        "ICON": "🔒",
+        "TITLE": "Escalabilidad y seguridad",
+        "DESCRIPTION": "Código limpio, arquitecturas robustas y mantenimiento continuo."
+      },
+      {
+        "ICON": "🔌",
+        "TITLE": "Integraciones API",
+        "DESCRIPTION": "Conectamos tu software con servicios externos, CRMs, ERPs y herramientas empresariales."
+      },
+      {
+        "ICON": "📱",
+        "TITLE": "Diseño responsive",
+        "DESCRIPTION": "Interfaces adaptadas a todos los dispositivos: móvil, tablet y escritorio."
+      },
+      {
+        "ICON": "⚡",
+        "TITLE": "Optimización y rendimiento",
+        "DESCRIPTION": "Aplicaciones rápidas y eficientes que mejoran la experiencia del usuario."
+      }
+    ]
+  },
+  "CONTACT": {
+    "TITULO": "¿Tienes un proyecto en mente?",
+    "SUBTITULO": "Cuéntanos qué necesitas y empecemos a trabajar juntos. También puedes llamarnos al",
+    "PRIVACIDAD_TEXTO": "Al enviar este formulario, aceptas que tus datos sean utilizados para contactarte sobre tu consulta. Consulta nuestra",
+    "PRIVACIDAD_LINK": "política de privacidad",
+    "FORM": {
+      "NOMBRE_PLACEHOLDER": "Nombre completo",
+      "EMAIL_PLACEHOLDER": "tu@email.com",
+      "TELEFONO_PLACEHOLDER": "Tu teléfono ej: 000 000 000",
+      "MENSAJE_PLACEHOLDER": "Cuéntanos qué tipo de proyecto necesitas...",
+      "NOMBRE_ERROR": "El nombre es obligatorio.",
+      "TELEFONO_ERROR": "El teléfono es obligatorio.",
+      "EMAIL_ERROR": "Introduce un correo válido.",
+      "MENSAJE_ERROR": "El mensaje es obligatorio.",
+      "BUTTON": "Enviar",
+      "SENDING": "Enviando...",
+      "SUCCESS_MESSAGE": "¡Mensaje enviado correctamente! Te contactaremos pronto.",
+      "ERROR_MESSAGE": "Error al enviar el mensaje. Por favor, inténtalo de nuevo."
+    },
+    "CITA": {
+      "LINK_TEXT": "📅 ¿Prefieres establecer una cita?",
+      "MODAL_TITULO": "Establecer una cita",
+      "MODAL_DESCRIPCION": "Selecciona la fecha y hora que prefieras para nuestra reunión",
+      "FECHA_LABEL": "Fecha",
+      "HORA_LABEL": "Hora",
+      "CONFIRMAR": "Confirmar cita",
+      "CANCELAR": "Cancelar",
+      "FECHA_ERROR": "Por favor, selecciona una fecha.",
+      "HORA_ERROR": "Por favor, selecciona una hora.",
+      "SUCCESS": "¡Cita confirmada! Te contactaremos para confirmar los detalles."
+    }
+  },
+  "ABOUT": {
+    "BADGE": "Quiénes Somos",
+    "TITLE": "Impulsamos la transformación digital",
+    "SUBTITLE": "Somos una consultora especializada en software e inteligencia artificial, comprometida con revolucionar la forma en que las empresas integran la tecnología en su ADN empresarial.",
+    "MISSION_TITLE": "Nuestra Misión",
+    "MISSION_TEXT": "Transformar desafíos empresariales en oportunidades tecnológicas, creando soluciones que generan valor real y duradero para nuestros clientes.",
+    "VISION_TITLE": "Nuestra Visión",
+    "VISION_TEXT": "Ser el socio tecnológico de referencia para organizaciones que buscan liderar la innovación en sus respectivos mercados.",
+    "PHILOSOPHY_TITLE": "Nuestra Filosofía",
+    "PHILOSOPHY_TEXT_1": "Creemos en la tecnología con propósito. No desarrollamos por desarrollar, sino que cada línea de código, cada algoritmo de IA, tiene un objetivo claro: <strong>facilitar la vida de las personas y potenciar las capacidades de las organizaciones</strong>.",
+    "PHILOSOPHY_TEXT_2": "Nuestro enfoque minimalista no es solo estético, es funcional. Eliminamos la complejidad innecesaria para entregar soluciones elegantes, eficientes y fáciles de mantener.",
+    "VALUES_TITLE": "Nuestros Valores",
+    "VALUE_1_TITLE": "Excelencia Técnica",
+    "VALUE_1_TEXT": "Código limpio, arquitecturas escalables y las mejores prácticas de la industria",
+    "VALUE_2_TITLE": "Transparencia Total",
+    "VALUE_2_TEXT": "Comunicación clara, plazos realistas y honestidad en cada fase del proyecto",
+    "VALUE_3_TITLE": "Innovación Responsable",
+    "VALUE_3_TEXT": "Adoptamos nuevas tecnologías con criterio, evaluando su impacto y sostenibilidad",
+    "VALUE_4_TITLE": "Cliente en el Centro",
+    "VALUE_4_TEXT": "Tu éxito es nuestro éxito. Trabajamos como una extensión de tu equipo",
+    "APPROACH_TITLE": "Cómo Trabajamos",
+    "STEP_1_TITLE": "Escuchamos",
+    "STEP_1_TEXT": "Entendemos tu negocio, tus desafíos y tus objetivos antes de proponer cualquier solución",
+    "STEP_2_TITLE": "Diseñamos",
+    "STEP_2_TEXT": "Creamos estrategias tecnológicas alineadas con tu visión empresarial",
+    "STEP_3_TITLE": "Desarrollamos",
+    "STEP_3_TEXT": "Implementamos soluciones con metodologías ágiles y entregas incrementales",
+    "STEP_4_TITLE": "Evolucionamos",
+    "STEP_4_TEXT": "Acompañamos el crecimiento de tu solución con soporte continuo y mejoras",
+    "STAT_1_NUMBER": "100%",
+    "STAT_1_LABEL": "Código Propio",
+    "STAT_2_NUMBER": "24/7",
+    "STAT_2_LABEL": "Soporte Disponible",
+    "STAT_3_NUMBER": "∞",
+    "STAT_3_LABEL": "Mejora Continua"
+  },
+  "FOOTER": {
+    "PRIVACY": "Privacidad",
+    "COOKIES": "Cookies"
+  }
+}

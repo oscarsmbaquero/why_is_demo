@@ -1,0 +1,61 @@
+
+  <app-navbar></app-navbar>
+<div class="row p-0 fondo-inicio">
+  <div class="col-12 p-0">
+    <section
+      class="about-minimal inicio-grid d-flex flex-column justify-content-center align-items-center text-center"
+      [ngClass]="themeService.theme() === 'Dark' ? 'dark' : 'light'"
+    ><div class="">
+      <div class="about-content-minimal inicio-col-text">
+        <h2 #typingTitle ></h2>
+        <h3 class="about-lead" #typingName></h3>
+        <h4 class="about-lead" #typingSubtitle style="text-transform: uppercase;"></h4>
+        <ul class="about-list-minimal sequential-fade-in">
+          <li class="glass-effect">{{ 'INICIO.LISTA.DESARROLLO_SOFTWARE' | translate }}</li>
+          <li class="glass-effect">{{ 'INICIO.LISTA.ASISTENTES_VIRTUALES' | translate }}</li>
+          <li class="glass-effect">{{ 'INICIO.LISTA.AUTOMATIZACION' | translate }}</li>
+          <!-- <li class="glass-effect">{{ 'INICIO.LISTA.OPTIMIZACION' | translate }}</li> -->
+          <li class="glass-effect">{{ 'INICIO.LISTA.DIAGNOSTICO' | translate }}</li>
+          <!-- <li>Asesoría estratégica en tecnología</li>
+          <li>Enfoque minimalista y UX profesional</li> -->
+        </ul>
+      </div>
+      </div>
+    </section>
+    </div>
+    <!-- <div class="fade-in-section mt-5" #projectsSection>
+      <div id="projects">
+        <app-projects></app-projects>
+      </div>
+    </div> -->
+  </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="fade-in-section p-0" #serviciosIaSection>
+          <div id="servicios-ia">
+            <app-servicios-ia></app-servicios-ia>
+          </div>
+        </div>
+        </div>
+        <div>
+
+      </div>
+      <div class="fade-in-section p-0" #softwareSection>  
+        <div id="software">
+          <app-software></app-software>
+        </div>
+      </div>
+      <div class="fade-in-section p-0" #aboutSection>  
+        <div id="about">
+          <app-about></app-about>
+        </div>
+      </div>
+      <div class="fade-in-section p-0" #contactSection>
+        <div id="contact">
+          <app-contact></app-contact>
+        </div>
+      </div>
+
+    </div>
+
+<!-- </div> -->

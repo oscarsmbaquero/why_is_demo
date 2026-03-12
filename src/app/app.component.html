@@ -1,0 +1,79 @@
+<!-- <app-popup></app-popup> -->
+<!-- <app-navbar></app-navbar> -->
+@if (authService.isLoggedIn()) {
+<div class="main">
+  <router-outlet></router-outlet>
+  <div *ngIf="scrollPosition >= 150" (click)="scrollToTop()">
+    <img
+      src="../assets/images/up2.png"
+      class="floating-button-what"
+      width="55"
+      height="55"
+      alt="scroll to top"
+    />
+  </div>
+  <!--boton idiomas y apariencia-->
+  <!-- <div class="floating-button-lang">
+    <div
+      (click)="ajustes()"
+      [ngClass]="{ 'language-text': ajustesOpen }"
+      class="ajustes-container"
+    >
+      @if(ajustesOpen){
+      <span>Ajustes</span>
+      }@else {
+      <span class="ajustes-icon">...</span>
+      }
+    </div>
+    <div *ngIf="ajustesOpen" class="ajustes-menu" style="cursor: pointer">
+      <div (click)="selectLang()" style="padding-bottom: 5px">
+        <small>Idioma: {{ getLabel(selectedLang) }}</small>
+      </div>
+      <div (click)="selectTheme()" style="cursor: pointer">
+        <small>Theme: {{ selectedTheme }}</small>
+      </div>
+    </div>
+  </div> -->
+</div>
+} @else {
+<div class="landing-bg">
+  <img src="../assets/images/logo.png" alt="logo" class="landing-logo" />
+  <div class="landing-login">
+    <app-login></app-login>
+  </div>
+</div>
+}
+
+<!-- Banner de cookies -->
+<app-cookies
+  *ngIf="showCookieBanner"
+  (cookiesAcceptedEvent)="handleCookiesAccepted($event)"
+></app-cookies>
+
+<!-- Botón del chatbox -->
+ <div
+  *ngIf="showChatbox"
+    class="sidebar-help"
+    (click)="abrirModalChatBox()"
+  >
+    <div class="help-button">
+      <img
+        src="../assets/images/chat.png"
+        class="help-icon"
+        alt="icono ayuda"
+      />
+      <!-- <svg class="help-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <rect width="24" height="24" rx="4" fill="white"/>
+      <path d="M6 7H18C19.1 7 20 7.79 20 8.75V14.25C20 15.21 19.1 16 18 16H10L7 19V16H6C4.9 16 4 15.21 4 14.25V8.75C4 7.79 4.9 7 6 7Z"
+            fill="black"/>
+    </svg> -->
+      <span>CHATBOX</span>
+    </div>
+    <!--cookies-->
+  </div>
+
+<!-- Chatbox -->
+<app-chatbox *ngIf="modalChatBox && showChatbox" (close)="cerrarModalChatBox()"></app-chatbox>
+  
+<app-footer></app-footer>

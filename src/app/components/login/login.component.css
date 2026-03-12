@@ -1,0 +1,197 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  width: 100%;
+}
+
+.login-card {
+  /* background: rgba(255, 255, 255, 0.75); */
+  /* backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); */
+  border-radius: 16px;
+  padding: 32px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.3s ease;
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.login-header h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: #333;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.login-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.login-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-group label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.form-group input {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: "Albert Sans", sans-serif;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #333;
+}
+
+.error-msg {
+  color: #f44336;
+  font-size: 13px;
+  margin: 0;
+  text-align: center;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.btn-login {
+  background: #333;
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  font-family: "Albert Sans", sans-serif;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-login:hover:not(:disabled) {
+  background: #111;
+}
+
+.btn-login:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.user-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+
+.user-icon {
+  font-size: 64px;
+  color: #ccc;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+  font-family: "Albert Sans", sans-serif;
+}
+
+.btn-logout {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 10px 28px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: "Albert Sans", sans-serif;
+  transition: background 0.2s;
+}
+
+.btn-logout:hover {
+  background: #d32f2f;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 480px) {
+  .login-card {
+    width: 100%;
+    padding: 24px 20px;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+}

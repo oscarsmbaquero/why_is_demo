@@ -1,0 +1,96 @@
+<div class="chatbox-overlay position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center" 
+     (click)="closeChat()">
+  <div class="chatbox-container container-fluid container-sm d-flex flex-column rounded-4 shadow-lg" 
+       (click)="$event.stopPropagation()" 
+       [ngClass]="themeService.theme() === 'Dark' ? 'dark' : 'light'">
+    
+    <!-- Header -->
+    <div class="chatbox-header d-flex justify-content-between align-items-center p-3 border-bottom rounded-top-4">
+      <div class="header-content d-flex align-items-center gap-3">
+        <img src="assets/images/logo.png" alt="Logo" class="chatbox-logo">
+        <div>
+          <h3 class="mb-0 fs-6 fw-semibold">WHY? IA</h3>
+          <p class="status mb-0 small text-success">En línea</p>
+        </div>
+      </div>
+      <button class="close-btn btn btn-link text-decoration-none p-0" (click)="closeChat()">
+        <span class="fs-4">✕</span>
+      </button>
+    </div>
+
+    <!-- Messages -->
+    <div class="chat-messages flex-grow-1 overflow-auto p-3 d-flex flex-column gap-3">
+      <div *ngFor="let message of messages" 
+           class="message d-flex"
+           [ngClass]="message.isUser ? 'justify-content-end' : 'justify-content-start'">
+        <div class="message-content rounded-3 p-2 px-3" 
+             [ngClass]="message.isUser ? 'message-user-content' : 'message-bot-content'">
+          <p class="mb-1 small">{{ message.text }}</p>
+          <span class="message-time d-block text-end opacity-75" style="font-size: 0.7rem;">
+            {{ message.timestamp | date:'HH:mm' }}
+          </span>
+        </div>
+      </div>
+      
+      <div *ngIf="isTyping" class="message d-flex justify-content-start">
+        <div class="message-content message-bot-content rounded-3 p-2">
+          <div class="typing-indicator d-flex gap-1">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Input -->
+    <div class="chat-input d-flex flex-column gap-2 p-3 border-top rounded-bottom-4">
+      <div *ngIf="showDatePicker || showTimePicker" class="d-flex gap-2">
+        <ng-container *ngIf="showDatePicker">
+        <input
+          type="date"
+          [(ngModel)]="selectedDate"
+          class="form-control"
+        />
+        <button
+          (click)="submitDate()"
+          class="btn btn-dark"
+          [disabled]="!selectedDate"
+        >
+          Enviar fecha
+        </button>
+        </ng-container>
+
+        <ng-container *ngIf="showTimePicker">
+        <input
+          type="time"
+          [(ngModel)]="selectedTime"
+          class="form-control"
+        />
+        <button
+          (click)="submitTime()"
+          class="btn btn-dark"
+          [disabled]="!selectedTime"
+        >
+          Enviar hora
+        </button>
+        </ng-container>
+      </div>
+
+      <div class="d-flex gap-2">
+        <input 
+          type="text" 
+          [(ngModel)]="newMessage"
+          (keyup.enter)="sendMessage()"
+          placeholder="Escribe tu mensaje..."
+          class="message-input form-control rounded-pill border"
+        />
+        <button (click)="sendMessage()" 
+                class="send-btn btn btn-dark rounded-circle d-flex align-items-center justify-content-center" 
+                [disabled]="!newMessage.trim()">
+          <span>➤</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<!-- filepath: c:\Users\oscar\workspace\front\oit\src\app\components\software\software.component.html -->
+<section class="software-section pt-5">
+  <div class="container">
+
+    <!-- Header -->
+    <header class="software-header" data-aos="fade-up">
+      <h2>{{ 'SOFTWARE.TITULO' | translate }}</h2>
+      <p>
+        {{ 'SOFTWARE.DESCRIPCION' | translate }}
+      </p>
+    </header>
+
+    <!-- Cards -->
+    <div class="row g-4 mb-5">
+      @for (card of softwareCards; track card.title) {
+        <article class="col-12 col-md-6 col-lg-3" data-aos="fade-down">
+          <div class="software-card h-100">
+            <span class="icon">{{ card.icon }}</span>
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.description }}</p>
+          </div>
+        </article>
+      }
+    </div>
+
+    <!-- IA + Software -->
+    <div class="software-plus" data-aos="fade-up">
+      <h3>{{ 'SOFTWARE.PLUS_TITULO' | translate }}</h3>
+      <p>
+        {{ 'SOFTWARE.PLUS_DESCRIPCION' | translate }}
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="software-cta pb-2">
+      <button>{{ 'SOFTWARE.CTA_BUTTON' | translate }}</button>
+    </div>
+
+  </div>
+</section>
