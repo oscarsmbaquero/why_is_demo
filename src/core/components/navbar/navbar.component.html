@@ -9,8 +9,9 @@
     </a> -->
     <!-- <img src="../../../assets/images/logo2.png" width="120px" /> -->
      <!-- <app-popup></app-popup> -->
-       <img src="../../../assets/images/logo.png" width="100px" class="ps-3 pt-1">
+       <img *ngIf="authService.isLoggedIn()" src="../../../assets/images/logo.png" width="100px" class="ps-3 pt-1">
     <button
+      *ngIf="authService.isLoggedIn()"
       class="navbar-toggler"
       type="button"
       data-bs-toggle="offcanvas"
@@ -52,11 +53,29 @@
         </div>
         <ul class="navbar-nav ms-auto my-2 my-lg-0" style="padding: 15px">
           <ng-container *ngIf="authService.isLoggedIn()">
+            <li
+            class="nav-item"
+            (click)="selectOption('inicio')"
+            [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
+             [class.selected]="selectedOption === 'inicio'"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">Inicio</span>
+            </a>
+          </li>
           <li
             class="nav-item"
             (click)="openChatbox()"
             [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
-             [class.selected]="selectedOption === 'inicio'"
+             [class.selected]="selectedOption === 'chatbox'"
           >
             <a
               class="nav-link"
@@ -148,12 +167,11 @@
               style="cursor: pointer"
               data-bs-dismiss="offcanvas"
             >
-              @if (authService.user()?.image) {
+              @if (userActive) {
                 <img [src]="authService.user()?.image" alt="avatar" class="nav-avatar" referrerpolicy="no-referrer" />
-              } @else {
                 <i class="fas fa-user-circle"></i>
+                <span class="navbar-uppercase">Cerrar sesión</span>
               }
-              <span class="navbar-uppercase">Cerrar sesión</span>
             </a>
           </li>
         </ul>

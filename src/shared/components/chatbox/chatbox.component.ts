@@ -41,13 +41,11 @@ export class ChatboxComponent implements OnInit {
   selectedTime = '';
 
   ngOnInit() {
-    this.navbarService.setSelectedOption('inicio');
     this.scrollToTop();
   }
 
     scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-     this.navbarService.setSelectedOption('inicio');
   }
 
   sendMessage() {

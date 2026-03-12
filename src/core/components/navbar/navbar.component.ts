@@ -6,7 +6,6 @@ import { NavbarService } from '../../services/navbarService/navbar.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TranslationService } from '../../services/translateService/translate.service';
 import { UsersService } from '../../services/users/users.service';
-import { PopupComponent } from '../../../app/components/popup/popup.component';
 import { ThemeService } from '../../services/themeService/theme-service.service';
 import { AuthService } from '../../services/authService/auth.service';
 
@@ -78,6 +77,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
     const routeOptions = ['dashboard', 'contact'];
     if (routeOptions.includes(option)) {
       this.router.navigate([option]);
+      return;
+    }
+
+    if (option === 'inicio') {
+      this.router.navigate(['/']);
       return;
     }
 
