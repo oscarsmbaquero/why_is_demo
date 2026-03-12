@@ -41,6 +41,15 @@ export class N8nService {
       map(({ workflows, executions }) => {
         const wf = workflows.data ?? [];
         const ex = executions.data ?? [];
+
+        // Mapa de workflowId → nombre para enriquecer ejecuciones
+        const wfMap = new Map(wf.map(w => [w.id, w.name]));
+        ex.forEach(e => {
+          if (!e.workflowData?.name && wfMap.has(e.workflowId)) {
+            e.workflowData = { name: wfMap.get(e.workflowId)! };
+          }
+        });
+
         const stats: N8nStats = {
           totalWorkflows: wf.length,
           activeWorkflows: wf.filter(w => w.active).length,

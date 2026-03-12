@@ -3,7 +3,10 @@
 @if (authService.isLoggedIn()) {
 <div class="main">
   <router-outlet></router-outlet>
-  <div *ngIf="scrollPosition >= 150" (click)="scrollToTop()">
+  <div [style.opacity]="scrollPosition >= 150 ? '1' : '0'"
+       [style.pointer-events]="scrollPosition >= 150 ? 'auto' : 'none'"
+       style="transition: opacity 0.3s"
+       (click)="scrollToTop()">
     <img
       src="../assets/images/up2.png"
       class="floating-button-what"
