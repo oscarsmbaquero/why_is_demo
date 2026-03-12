@@ -10,7 +10,6 @@
     <!-- <img src="../../../assets/images/logo2.png" width="120px" /> -->
      <!-- <app-popup></app-popup> -->
        <img src="../../../assets/images/logo.png" width="100px" class="ps-3 pt-1">
-       <span class="ms-1">DEMO</span>
     <button
       class="navbar-toggler"
       type="button"
@@ -55,9 +54,9 @@
           <ng-container *ngIf="authService.isLoggedIn()">
           <li
             class="nav-item"
-            (click)="selectOption('inicio')"
-            [class.selected]="selectedOption === 'inicio'"
+            (click)="openChatbox()"
             [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
+             [class.selected]="selectedOption === 'inicio'"
           >
             <a
               class="nav-link"
@@ -68,11 +67,28 @@
               data-target=".navbar-collapse.show"
               data-bs-dismiss="offcanvas"
             >
-              <span class="navbar-uppercase">{{ "NAVBAR.HOME" | translate}}</span>
+              <span class="navbar-uppercase">Chatbox</span>
             </a>
           </li>
           <li class="navbar-divider"></li>
-          <!-- <hr class="dropdown-divider" /> -->
+          <li
+            (click)="selectOption('contact')"
+            [class.selected]="selectedOption === 'contact'"
+            class="nav-item"
+          >
+            <a
+              class="nav-link"
+              href="#"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">{{ "NAVBAR.CONTACTO" | translate}}</span>
+            </a>
+          </li>
+           <!-- <li class="navbar-divider"></li>
             <li
             class="nav-item"
             (click)="selectOption('servicios-ia')"
@@ -121,51 +137,7 @@
             >
               <span class="navbar-uppercase">{{ "NAVBAR.ABOUT" | translate}}</span>
             </a>
-          </li>
-          <li class="navbar-divider"></li>
-           <hr class="dropdown-divider" />
-          <li
-            (click)="selectOption('contact')"
-            [class.selected]="selectedOption === 'contact'"
-            class="nav-item"
-          >
-            <a
-              class="nav-link"
-              href="#"
-              (click)="$event.preventDefault()"
-              style="cursor: pointer"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              data-bs-dismiss="offcanvas"
-            >
-              <span class="navbar-uppercase">{{ "NAVBAR.CONTACTO" | translate}}</span>
-            </a>
-          </li>
-          <li class="navbar-divider"></li>
-          <li>
-        <!-- <div class="d-flex align-items-center">
-          <button 
-            type="button"
-            class="btn btn-sm"
-            [class.active]="currentLanguage === 'es'"
-            (click)="useLanguage('es')"
-            data-bs-dismiss="offcanvas"
-          >
-            ES
-          </button>
-          <span class="text-muted" style="margin-top: -6px;">|</span>
-          <button 
-            type="button"
-            class="btn btn-sm"
-            [class.active]="currentLanguage === 'en'"
-            (click)="useLanguage('en')"
-            data-bs-dismiss="offcanvas"
-          >
-            EN
-          </button>
-        </div> -->
-        </li>
-          <li class="navbar-divider"></li>
+          </li> -->
           </ng-container>
           <li class="nav-item login-item">
             <a

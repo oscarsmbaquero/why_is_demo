@@ -131,6 +131,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.authService.logout();
   }
 
+  openChatbox(): void {
+    this.navbarService.toggleChatbox();
+  }
+
   scrollTo(sectionId: string) {
     const navbarHeight = 70; // Altura del navbar sticky
 

@@ -44,12 +44,6 @@
 </div>
 }
 
-<!-- Banner de cookies -->
-<app-cookies
-  *ngIf="showCookieBanner"
-  (cookiesAcceptedEvent)="handleCookiesAccepted($event)"
-></app-cookies>
-
 <!-- Botón del chatbox -->
  <div
   *ngIf="showChatbox"

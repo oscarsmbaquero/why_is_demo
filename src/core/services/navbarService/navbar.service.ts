@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +7,8 @@ import { Subject } from 'rxjs';
 export class NavbarService {
   private readonly LOCAL_STORAGE_KEY = 'selectedOption';
   private selectedOptionSubject: BehaviorSubject<string>;
-
+  private chatboxToggleSubject = new Subject<void>();
+  chatboxToggle$ = this.chatboxToggleSubject.asObservable();
 
 
   constructor() { 
@@ -37,5 +37,9 @@ export class NavbarService {
     
     this.selectedOptionSubject.next(option);
     localStorage.setItem(this.LOCAL_STORAGE_KEY, option);
+  }
+
+  toggleChatbox(): void {
+    this.chatboxToggleSubject.next();
   }
 }

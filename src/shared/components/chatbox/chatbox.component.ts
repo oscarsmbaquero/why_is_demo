@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ThemeService } from '../../../core/services/themeService/theme-service.service';
 import { ChatService } from '../../../core/services/chatService/chat.service';
+import { NavbarService } from '../../../core/services/navbarService/navbar.service';
 
 interface Message {
   text: string;
@@ -17,11 +18,12 @@ interface Message {
   templateUrl: './chatbox.component.html',
   styleUrl: './chatbox.component.css'
 })
-export class ChatboxComponent {
+export class ChatboxComponent implements OnInit {
   @Output() close = new EventEmitter<void>();
   
   readonly themeService = inject(ThemeService);
   private chatService = inject(ChatService);
+  private navbarService = inject(NavbarService);
   
   messages: Message[] = [
     {
@@ -37,6 +39,16 @@ export class ChatboxComponent {
   showTimePicker = false;
   selectedDate = '';
   selectedTime = '';
+
+  ngOnInit() {
+    this.navbarService.setSelectedOption('inicio');
+    this.scrollToTop();
+  }
+
+    scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+     this.navbarService.setSelectedOption('inicio');
+  }
 
   sendMessage() {
     if (this.newMessage.trim()) {

@@ -12,7 +12,6 @@ import { AuthService } from '../core/services/authService/auth.service';
 import { NavbarComponent } from '../core/components/navbar/navbar.component';
 import { FooterComponent } from '../core/components/footer/footer.component';
 import { TranslationService } from '../core/services/translateService/translate.service';
-import { CookiesComponent } from '../shared/components/cookies/cookies.component';
 import { ChatboxComponent } from '../shared/components/chatbox/chatbox.component';
 import { LoginComponent } from './components/login/login.component';
 
@@ -25,7 +24,6 @@ import { LoginComponent } from './components/login/login.component';
     FooterComponent,
     CommonModule,
     TranslateModule,
-    CookiesComponent,
     ChatboxComponent,
     LoginComponent
   ],
@@ -66,6 +64,11 @@ export class AppComponent {
 
   ngOnInit() {
     this.themeService.setTheme('Light');
+    
+    // Suscribirse al toggle del chatbox desde el navbar
+    this.navbarService.chatboxToggle$.subscribe(() => {
+      this.modalChatBox = !this.modalChatBox;
+    });
     
     // Verificar si el usuario ya tomó una decisión sobre cookies
     const hasCookieDecision = this.cookieService.check('cookiesAccepted');

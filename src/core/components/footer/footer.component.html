@@ -33,25 +33,6 @@
     <div class="text-center">
       <p class="d-flex align-items-center justify-content-center gap-3 flex-wrap">
         <span>
-          <button 
-            type="button"
-            class="btn btn-sm"
-            [class.active]="currentLanguage === 'es'"
-            (click)="useLanguage('es')"
-          >
-            ES
-          </button>
-          <span class="text-muted mx-1">|</span>
-          <button 
-            type="button"
-            class="btn btn-sm"
-            [class.active]="currentLanguage === 'en'"
-            (click)="useLanguage('en')"
-          >
-            EN
-          </button>
-        </span>
-        <span>
           &copy; {{getFecha()}}
           <span class="text-info" style="font-size: 22px">
           @if(themeService.theme() === 'Dark') {
@@ -66,11 +47,6 @@
               width="65px" />
           }
           </span>
-        </span>
-        <span class="footer-links">
-          <a routerLink="/privacy-policy" class="footer-link">{{ 'FOOTER.PRIVACY' | translate }}</a>
-          <span class="mx-2">|</span>
-          <a routerLink="/cookies-policy" class="footer-link">{{ 'FOOTER.COOKIES' | translate }}</a>
         </span>
       </p>
     </div>

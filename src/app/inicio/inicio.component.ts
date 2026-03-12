@@ -16,12 +16,9 @@ import { ServiciosIaComponent } from '../components/servicios-ia/servicios-ia.co
 import { TranslateModule } from '@ngx-translate/core';
 import { ThemeService } from '../../core/services/themeService/theme-service.service';
 import { CommonModule } from '@angular/common';
-import { TranslateService } from '@ngx-translate/core';
-import Typed from 'typed.js';
 import { PopupComponent } from '../components/popup/popup.component';
 import { NavbarComponent } from '../../core/components/navbar/navbar.component';
 import { SoftwareComponent } from '../components/software/software.component';
-import { Subscription } from 'rxjs';
 import { NavbarService } from '../../core/services/navbarService/navbar.service';
 
 @Component({
@@ -43,9 +40,6 @@ import { NavbarService } from '../../core/services/navbarService/navbar.service'
   styleUrl: './inicio.component.css',
 })
 export class InicioComponent implements AfterViewInit, OnDestroy {
-  @ViewChild('typingTitle', { static: true }) typingTitle!: ElementRef;
-  @ViewChild('typingName', { static: true }) typingName!: ElementRef;
-  @ViewChild('typingSubtitle', { static: true }) typingSubtitle!: ElementRef;
   @ViewChild('serviciosIaSection') serviciosIaSection!: ElementRef;
   @ViewChild('softwareSection') softwareSection!: ElementRef;
   @ViewChild('aboutSection') aboutSection!: ElementRef;
@@ -53,51 +47,22 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
   @ViewChildren('serviciosIaSection, softwareSection, aboutSection, contactSection')
   sections!: QueryList<ElementRef>;
 
-  private langChangeSubscription?: Subscription;
-  private typedInstances: Typed[] = [];
   private scrollSpyObserver?: IntersectionObserver;
 
   constructor(
     private router: Router,
     public themeService: ThemeService,
-    private translate: TranslateService,
     private navbarService: NavbarService
   ) {}
 
   ngAfterViewInit(): void {
     this.initSectionObservers();
     this.initScrollSpy();
-    this.initTypingAnimation();
-
-    // Suscribirse a cambios de idioma
-    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
-      this.destroyTypedInstances();
-      this.initTypingAnimation();
-    });
   }
 
   ngOnDestroy(): void {
-    this.destroyTypedInstances();
-    if (this.langChangeSubscription) {
-      this.langChangeSubscription.unsubscribe();
-    }
     if (this.scrollSpyObserver) {
       this.scrollSpyObserver.disconnect();
-    }
-  }
-
-  private destroyTypedInstances(): void {
-    this.typedInstances.forEach(typed => typed.destroy());
-    this.typedInstances = [];
-    // Limpiar el contenido de los elementos
-    if (this.typingTitle?.nativeElement) {
-      this.typingTitle.nativeElement.textContent = '';
-    }
-    if (this.typingName?.nativeElement) {
-      this.typingName.nativeElement.textContent = '';
-    }
-    if (this.typingSubtitle?.nativeElement) {
-      this.typingSubtitle.nativeElement.textContent = '';
     }
   }
 
@@ -162,45 +127,6 @@ export class InicioComponent implements AfterViewInit, OnDestroy {
     if (scrollPosition < 200) {
       this.navbarService.setSelectedOption('inicio');
     }
-  }
-
-  private initTypingAnimation(): void {
-    this.translate
-      .get(['INICIO.TITULO', 'INICIO.SUBTITULO', 'INICIO.DESCRIPCION'])
-      .subscribe((translations) => {
-        const titleText = translations['INICIO.TITULO'];
-        // const subtitleText = translations['INICIO.SUBTITULO'];
-        const nameText = translations['INICIO.DESCRIPCION'].toUpperCase();
-
-        // const subtitleTyped = () => {
-        //   const typed = new Typed(this.typingSubtitle.nativeElement, {
-        //     strings: [subtitleText],
-        //     typeSpeed: 50,
-        //     showCursor: false,
-        //   });
-        //   this.typedInstances.push(typed);
-        //   return typed;
-        // };
-
-        const nameTyped = () => {
-          const typed = new Typed(this.typingName.nativeElement, {
-            strings: [nameText],
-            typeSpeed: 50,
-            showCursor: false,
-            // onComplete: subtitleTyped,
-          });
-          this.typedInstances.push(typed);
-          return typed;
-        };
-
-        const titleTyped = new Typed(this.typingTitle.nativeElement, {
-          strings: [titleText],
-          typeSpeed: 50,
-          showCursor: false,
-          onComplete: nameTyped,
-        });
-        this.typedInstances.push(titleTyped);
-      });
   }
 
   navigate() {

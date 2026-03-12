@@ -167,8 +167,8 @@
     ]
   },
   "CONTACT": {
-    "TITULO": "¿Tienes un proyecto en mente?",
-    "SUBTITULO": "Cuéntanos qué necesitas y empecemos a trabajar juntos. También puedes llamarnos al",
+    "TITULO": "Formulario",
+    "SUBTITULO": "Formulario de prueba con cita",
     "PRIVACIDAD_TEXTO": "Al enviar este formulario, aceptas que tus datos sean utilizados para contactarte sobre tu consulta. Consulta nuestra",
     "PRIVACIDAD_LINK": "política de privacidad",
     "FORM": {
