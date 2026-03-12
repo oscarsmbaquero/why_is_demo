@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { N8nWorkflow, N8nExecution, N8nStats } from '../../../app/components/dashboard/n8n.models';
+import { environment } from '../../../enviroment/environment';
 
 export interface N8nDashboardData {
   workflows: N8nWorkflow[];
@@ -12,7 +13,10 @@ export interface N8nDashboardData {
 
 @Injectable({ providedIn: 'root' })
 export class N8nService {
-  private baseUrl = '/n8n-api';
+  //private baseUrl = environment.apiUrl; // Asegúrate de configurar esto en tu environment.ts
+  private baseUrl = environment.production 
+  ? 'https://abolitionary-verline-erethismic.ngrok-free.dev/api/v1'
+  : '/n8n-api';
   private apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlODMxNDc5Zi01NzJkLTQxYzctOGRmOC1iZDFiMTEwMzE1MDAiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNmZmZGFjMWQtN2Y4OC00OTZmLThjN2UtZmE2MmUwY2ZkNGU3IiwiaWF0IjoxNzczMzQzMDI4LCJleHAiOjE3NzU4ODAwMDB9.rB_KfsuOf8_S7B2eLleC-yXDfrp7utCFWkppAr948Vs';
 
   constructor(private http: HttpClient) {}

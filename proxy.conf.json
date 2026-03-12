@@ -7,10 +7,14 @@
   },
   "/n8n-api/*": {
     "target": "https://abolitionary-verline-erethismic.ngrok-free.dev",
-    "secure": false,
+    "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
       "^/n8n-api": "/api/v1"
+    },
+    "headers": {
+      "ngrok-skip-browser-warning": "true",
+      "X-N8N-API-KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlODMxNDc5Zi01NzJkLTQxYzctOGRmOC1iZDFiMTEwMzE1MDAiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNmZmZGFjMWQtN2Y4OC00OTZmLThjN2UtZmE2MmUwY2ZkNGU3IiwiaWF0IjoxNzczMzQzMDI4LCJleHAiOjE3NzU4ODAwMDB9.rB_KfsuOf8_S7B2eLleC-yXDfrp7utCFWkppAr948Vs"
     }
   }
 }
