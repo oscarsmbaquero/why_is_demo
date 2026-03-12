@@ -12,23 +12,26 @@ export interface N8nDashboardData {
 
 @Injectable({ providedIn: 'root' })
 export class N8nService {
-  private baseUrl = 'http://YOUR_RASPBERRY_IP:5678'; // <-- Cambia esto
-  private apiKey = 'YOUR_API_KEY';                   // <-- Cambia esto
+  private baseUrl = '/n8n-api';
+  private apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlODMxNDc5Zi01NzJkLTQxYzctOGRmOC1iZDFiMTEwMzE1MDAiLCJpc3MiOiJuOG4iLCJhdWQiOiJwdWJsaWMtYXBpIiwianRpIjoiNmZmZGFjMWQtN2Y4OC00OTZmLThjN2UtZmE2MmUwY2ZkNGU3IiwiaWF0IjoxNzczMzQzMDI4LCJleHAiOjE3NzU4ODAwMDB9.rB_KfsuOf8_S7B2eLleC-yXDfrp7utCFWkppAr948Vs';
 
   constructor(private http: HttpClient) {}
 
   private get headers(): HttpHeaders {
-    return new HttpHeaders({ 'X-N8N-API-KEY': this.apiKey });
+    return new HttpHeaders({
+      'X-N8N-API-KEY': this.apiKey,
+      'ngrok-skip-browser-warning': 'true'
+    });
   }
 
   getDashboardData(): Observable<N8nDashboardData> {
     return forkJoin({
       workflows: this.http.get<{ data: N8nWorkflow[] }>(
-        `${this.baseUrl}/api/v1/workflows?limit=100`,
+        `${this.baseUrl}/workflows?limit=100`,
         { headers: this.headers }
       ),
       executions: this.http.get<{ data: N8nExecution[] }>(
-        `${this.baseUrl}/api/v1/executions?limit=100`,
+        `${this.baseUrl}/executions?limit=100`,
         { headers: this.headers }
       ),
     }).pipe(
@@ -44,6 +47,8 @@ export class N8nService {
           errorExecutions: ex.filter(e => e.status === 'error' || e.status === 'failed').length,
           runningExecutions: ex.filter(e => e.status === 'running').length,
         };
+        console.log(workflows,'workflows');
+        
         return { workflows: wf, executions: ex, stats };
       })
     );

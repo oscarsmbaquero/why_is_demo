@@ -4,5 +4,13 @@
     "secure": false,
     "logLevel": "debug",
     "changeOrigin": true
+  },
+  "/n8n-api/*": {
+    "target": "https://abolitionary-verline-erethismic.ngrok-free.dev",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/n8n-api": "/api/v1"
+    }
   }
 }

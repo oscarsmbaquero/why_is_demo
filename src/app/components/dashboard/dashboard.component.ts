@@ -6,8 +6,8 @@ import { N8nExecution, N8nWorkflow } from './n8n.models';
 import { N8N_DASHBOARD_MOCK } from './n8n-dashboard.mock';
 import { NavbarService } from '../../../core/services/navbarService/navbar.service';
 
-// Cambiar a false cuando la API esté lista
-const USE_MOCK = true;
+// Cambiar a true para usar datos simulados
+const USE_MOCK = false;
 
 @Component({
   selector: 'app-dashboard',
