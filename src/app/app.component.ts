@@ -14,6 +14,7 @@ import { FooterComponent } from '../core/components/footer/footer.component';
 import { TranslationService } from '../core/services/translateService/translate.service';
 import { ChatboxComponent } from '../shared/components/chatbox/chatbox.component';
 import { LoginComponent } from './components/login/login.component';
+import { UsersService } from '../core/services/users/users.service';
 
 @Component({
   selector: 'app-root',
@@ -48,6 +49,7 @@ export class AppComponent {
   modalChatBox = false;
   showChatbox = false;
   showCookieBanner = true;
+  userActive = '';
 
   constructor(
     private translationService: TranslationService,
@@ -56,6 +58,7 @@ export class AppComponent {
     private cookieService: CookieService,
     private seoService: SeoService,
     public authService: AuthService,
+    private usersService: UsersService,
   ) {
     this.translationService.getCurrentLanguage().subscribe((lang) => {
       this.selectedLang = lang;
@@ -68,6 +71,10 @@ export class AppComponent {
     // Suscribirse al toggle del chatbox desde el navbar
     this.navbarService.chatboxToggle$.subscribe(() => {
       this.modalChatBox = !this.modalChatBox;
+    });
+
+     this.usersService.getCurrentUser().subscribe((user) => {
+      this.userActive = user?.user || '';
     });
     
     // Verificar si el usuario ya tomó una decisión sobre cookies

@@ -46,7 +46,7 @@
 
 <!-- Botón del chatbox -->
  <div
-  *ngIf="showChatbox"
+  *ngIf="showChatbox && this.userActive"
     class="sidebar-help"
     (click)="abrirModalChatBox()"
   >
