@@ -73,9 +73,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   selectOption(option: string) {
     this.navbarService.setSelectedOption(option);
-    //this.selectedOption = option;
     this.toggleNavbar();
-    
+
+    const routeOptions = ['dashboard', 'contact'];
+    if (routeOptions.includes(option)) {
+      this.router.navigate([option]);
+      return;
+    }
+
     // Delay scroll para iOS - espera a que el offcanvas se cierre
     setTimeout(() => {
       this.scrollTo(option);

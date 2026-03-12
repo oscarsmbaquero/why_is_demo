@@ -13,7 +13,7 @@
 }
 
 .inicio-logo {
-    /* width: 90vw; */
+    width: 90vw;
     /* max-width: 400px; */
     object-fit: contain;
     opacity: 0;
@@ -31,9 +31,3 @@
         transform: scale(1);
     }
 }
-
-/* @media (max-width: 768px) {
-    .inicio-logo {
-        width: 100%;
-    }
-} */

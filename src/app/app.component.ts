@@ -21,7 +21,7 @@ import { UsersService } from '../core/services/users/users.service';
   standalone: true,
   imports: [
     RouterOutlet,
-    //NavbarComponent,
+    NavbarComponent,
     FooterComponent,
     CommonModule,
     TranslateModule,

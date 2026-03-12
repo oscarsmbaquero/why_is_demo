@@ -1,7 +1,7 @@
 {
   "NAVBAR":{
     "HOME": "Inicio",
-    "SERVICIOS_IA": "Soluciones IA",
+    "DASHBOARD": "Dashboard",
     "SOFTWARE": "Software",
     "ABOUT": "Sobre Nosotros",
     "SOBRE_MI": "Sobre Nosotros",
@@ -20,7 +20,7 @@
       "DIAGNOSTICO": "Diagnóstico de oportunidades IA"
     }
   },
-  "SERVICIOS_IA": {
+  "DASHBOARD": {
     "TITULO": "Soluciones IA",
     "VER_MAS": "Ver más servicios",
     "VER_MENOS": "Ver menos",

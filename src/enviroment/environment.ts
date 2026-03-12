@@ -7,6 +7,7 @@ export const environment = {
     //apiUrl: '/api/',
     apiUrl: 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/api/chat',
     apiUrlLogin: 'https://why-back-node.vercel.app',
+    apiUrlN8n: 'https://why-back-node.vercel.app',
     encriptKey : 'encrypt!135790',
     //apiUrl: 'https://node-facturas-ia.vercel.app/'
     //apiUrl: 'http://localhost:5000/'

@@ -1,0 +1,108 @@
+<section class="n8n-dashboard">
+
+  <!-- Header -->
+  <div class="dashboard-header">
+    <div class="header-left">
+      <span class="header-icon">⚡</span>
+      <div>
+        <h2 class="dashboard-title">n8n Dashboard</h2>
+        <p class="dashboard-subtitle">Estado de tu servidor en Raspberry Pi</p>
+      </div>
+    </div>
+    <div class="container-btn">
+      <button class="refresh-btn" (click)="load()" [disabled]="loading">
+        <span [class.spinning]="loading">↻</span> Actualizar
+      </button>
+    </div>
+  </div>
+
+  <!-- Loading -->
+  <div class="state-loading" *ngIf="loading">
+    <div class="loader"></div>
+    <p>Conectando con n8n...</p>
+  </div>
+
+  <!-- Error -->
+  <div class="state-error" *ngIf="error && !loading">
+    <span class="error-icon">⚠</span>
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Dashboard -->
+  <ng-container *ngIf="data && !loading">
+
+    <!-- Metric cards -->
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-label">Workflows</span>
+        <span class="metric-value">{{ data.stats.totalWorkflows }}</span>
+        <span class="metric-hint">total registrados</span>
+      </div>
+      <div class="metric-card metric-active">
+        <span class="metric-label">Activos</span>
+        <span class="metric-value">{{ data.stats.activeWorkflows }}</span>
+        <span class="metric-hint">{{ data.stats.inactiveWorkflows }} inactivos</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-label">Ejecuciones</span>
+        <span class="metric-value">{{ data.stats.totalExecutions }}</span>
+        <span class="metric-hint">{{ data.stats.successExecutions }} exitosas</span>
+      </div>
+      <div class="metric-card metric-error">
+        <span class="metric-label">Errores</span>
+        <span class="metric-value">{{ data.stats.errorExecutions }}</span>
+        <span class="metric-hint">en últimas ejecuciones</span>
+      </div>
+    </div>
+
+    <!-- Workflows list -->
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Workflows</h3>
+        <span class="count-badge">{{ data.workflows.length }}</span>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="data.workflows.length === 0" class="empty-state">No hay workflows.</div>
+        <div
+          class="row-item"
+          *ngFor="let wf of data.workflows; trackBy: trackByWorkflow"
+        >
+          <div class="row-left">
+            <span class="dot" [class.dot-active]="wf.active" [class.dot-inactive]="!wf.active"></span>
+            <span class="row-name">{{ wf.name }}</span>
+          </div>
+          <span class="badge" [class.badge-active]="wf.active" [class.badge-inactive]="!wf.active">
+            {{ wf.active ? 'Activo' : 'Inactivo' }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Executions list -->
+    <div class="panel">
+      <div class="panel-header">
+        <h3>Últimas ejecuciones</h3>
+        <span class="count-badge">{{ data.executions.length }}</span>
+      </div>
+      <div class="panel-body">
+        <div *ngIf="data.executions.length === 0" class="empty-state">No hay ejecuciones.</div>
+        <div
+          class="row-item"
+          *ngFor="let ex of data.executions.slice(0, 20); trackBy: trackByExecution"
+        >
+          <div class="row-left">
+            <span class="dot" [class]="getStatusClass(ex.status)"></span>
+            <span class="row-name">{{ ex.workflowData?.name ?? ex.workflowId }}</span>
+          </div>
+          <div class="row-right">
+            <span class="badge" [class]="'badge-exec ' + getStatusClass(ex.status)">
+              {{ getStatusLabel(ex.status) }}
+            </span>
+            <span class="row-date">{{ formatDate(ex.startedAt) }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </ng-container>
+</section>

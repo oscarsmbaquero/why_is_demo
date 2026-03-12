@@ -37,7 +37,8 @@
 }
 
 .landing-logo {
-  width: 80vw;
+  width: 100%;
+  /* top: 20px; */
   max-width: 90vh;
   opacity: 0.08;
   object-fit: contain;
@@ -56,14 +57,22 @@
   .main {
     padding: 0;
   }
-
   .landing-bg {
     padding: 16px;
   }
 
-  .landing-logo {
+  /* .landing-logo {
     width: 90vw;
-  }
+  } */
+  .landing-logo {
+  width: 80vw;
+  top: 20px;
+  max-width: 90vh;
+  opacity: 1.08;
+  /* opacity: 0.08; */
+  object-fit: contain;
+  position: absolute;
+}
 }
 
 .floating-button-what{

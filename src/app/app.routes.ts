@@ -2,6 +2,8 @@ import { Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import { CookiesPolicyComponent } from '../shared/components/cookies-policy/cookies-policy.component';
 import { PrivacyPolicyComponent } from '../shared/components/privacy-policy/privacy-policy.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 export const routes: Routes = [
@@ -15,6 +17,28 @@ export const routes: Routes = [
         description:
           'Impulsamos tu negocio con desarrollo web, automatización e inteligencia artificial a medida.',
         robots: 'index,follow',
+      },
+    },
+  },
+  {
+    path: "contact",
+    component: ContactComponent,
+    data: {
+      seo: {
+        title: 'Contacto | WHY? IA',
+        description: 'Ponte en contacto con WHY? IA.',
+        robots: 'index,follow',
+      },
+    },
+  },
+  {
+    path: "dashboard",
+    component: DashboardComponent,
+    data: {
+      seo: {
+        title: 'Dashboard n8n | WHY? IA',
+        description: 'Panel de control de workflows y ejecuciones de n8n.',
+        robots: 'noindex,nofollow',
       },
     },
   },
