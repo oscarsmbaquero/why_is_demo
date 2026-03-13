@@ -25,6 +25,7 @@ export class ContactComponent {
   submitSuccess = false;
   submitError = false;
   showCalendarFields = false;
+  showInfo = false;
 
   constructor(
     private fb: FormBuilder,

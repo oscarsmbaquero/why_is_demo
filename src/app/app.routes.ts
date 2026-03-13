@@ -2,8 +2,10 @@ import { Routes } from '@angular/router';
 import { InicioComponent } from './inicio/inicio.component';
 import { CookiesPolicyComponent } from '../shared/components/cookies-policy/cookies-policy.component';
 import { PrivacyPolicyComponent } from '../shared/components/privacy-policy/privacy-policy.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+import { FacturasComponent } from './components/facturas/facturas.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 export const routes: Routes = [
@@ -17,6 +19,17 @@ export const routes: Routes = [
         description:
           'Impulsamos tu negocio con desarrollo web, automatización e inteligencia artificial a medida.',
         robots: 'index,follow',
+      },
+    },
+  },
+  {
+    path: "facturas",
+    component: FacturasComponent,
+    data: {
+      seo: {
+        title: 'Facturas | WHY? IA',
+        description: 'Sube y gestiona tus facturas con IA.',
+        robots: 'noindex,follow',
       },
     },
   },

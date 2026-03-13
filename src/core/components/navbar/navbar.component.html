@@ -90,6 +90,23 @@
             </a>
           </li>
           <li class="navbar-divider"></li>
+            <li
+              (click)="selectOption('facturas')"
+              [class.selected]="selectedOption === 'facturas'"
+              class="nav-item"
+            >
+              <a
+                class="nav-link"
+                [routerLink]="['/facturas']"
+                routerLinkActive="active"
+                style="cursor: pointer"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+                data-bs-dismiss="offcanvas"
+              >
+                <span class="navbar-uppercase">Facturas</span>
+              </a>
+            </li>
           <li
             (click)="selectOption('contact')"
             [class.selected]="selectedOption === 'contact'"
