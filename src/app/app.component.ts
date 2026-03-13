@@ -47,7 +47,7 @@ export class AppComponent {
   ajustesOpen = false;
   selectedTheme = 'Light';
   modalChatBox = false;
-  showChatbox = false;
+  showChatbox = true;
   showCookieBanner = true;
   userActive = '';
 
@@ -77,11 +77,6 @@ export class AppComponent {
       this.userActive = user?.user || '';
     });
     
-    // Verificar si el usuario ya tomó una decisión sobre cookies
-    const hasCookieDecision = this.cookieService.check('cookiesAccepted');
-    this.showCookieBanner = !hasCookieDecision;
-    this.showChatbox = hasCookieDecision;
-    
     // Detectar cambios de ruta para ocultar chatbox en páginas de políticas
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
@@ -91,7 +86,7 @@ export class AppComponent {
       if (!isNotPolicyPage) {
         this.showChatbox = false;
         this.modalChatBox = false;
-      } else if (hasCookieDecision) {
+      } else {
         this.showChatbox = true;
       }
 

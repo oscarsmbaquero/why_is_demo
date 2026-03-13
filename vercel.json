@@ -15,6 +15,10 @@
       "destination": "/api/n8n.js"
     },
     {
+      "source": "/n8n-api/:match*",
+      "destination": "https://abolitionary-verline-erethismic.ngrok-free.dev/api/v1/:match*"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
