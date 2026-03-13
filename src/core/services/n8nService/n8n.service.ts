@@ -26,13 +26,9 @@ export class N8nService {
   }
 
   getDashboardData(): Observable<N8nDashboardData> {
-    const workflows$ = this.isProduction
-      ? this.http.get<{ data: N8nWorkflow[] }>('/api/n8n?endpoint=workflows')
-      : this.http.get<{ data: N8nWorkflow[] }>('/n8n-api/workflows?limit=100', { headers: this.headers });
-
-    const executions$ = this.isProduction
-      ? this.http.get<{ data: N8nExecution[] }>('/api/n8n?endpoint=executions')
-      : this.http.get<{ data: N8nExecution[] }>('/n8n-api/executions?limit=100', { headers: this.headers });
+    const base = this.isProduction ? environment.n8nApiUrl : '/n8n-api';
+    const workflows$ = this.http.get<{ data: N8nWorkflow[] }>(`${base}/workflows?limit=100`, { headers: this.headers });
+    const executions$ = this.http.get<{ data: N8nExecution[] }>(`${base}/executions?limit=100`, { headers: this.headers });
 
     return forkJoin({
       workflows: workflows$,
@@ -59,8 +55,6 @@ export class N8nService {
           errorExecutions: ex.filter(e => e.status === 'error' || e.status === 'failed').length,
           runningExecutions: ex.filter(e => e.status === 'running').length,
         };
-        console.log(workflows,'workflows');
-        
         return { workflows: wf, executions: ex, stats };
       })
     );

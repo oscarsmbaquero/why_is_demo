@@ -3,20 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-    production: false,
-    //apiUrl: '/api/',
-    apiUrl: 'https://abolitionary-verline-erethismic.ngrok-free.dev/api/v1',
-    apiUrlLogin: 'https://why-back-node.vercel.app',
-    apiUrlN8n: 'https://why-back-node.vercel.app',
-    encriptKey : 'encrypt!135790',
-    //apiUrl: 'https://node-facturas-ia.vercel.app/'
-    //apiUrl: 'http://localhost:5000/'
-    emailjs: {
-      serviceId: 'service_gt0nj0d',
-      templateId: 'template_ykkxdec',
-      publicKey: 'MFnsya2QAXWHvl6IZ'
-    }
-  };
+  production: false,
+  // Solo para el chatbox:
+  apiUrl: 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/api/chat',
+  // Solo para dashboard (solo en producción):
+  n8nApiUrl: '/n8n-api',
+  apiUrlLogin: 'https://why-back-node.vercel.app',
+  apiUrlN8n: 'https://why-back-node.vercel.app',
+  encriptKey: 'encrypt!135790',
+  emailjs: {
+    serviceId: 'service_gt0nj0d',
+    templateId: 'template_ykkxdec',
+    publicKey: 'MFnsya2QAXWHvl6IZ'
+  }
+};
   
   /*
    * For easier debugging in development mode, you can import the following file
