@@ -27,7 +27,7 @@
 .landing-bg {
   width: 100%;
   flex: 1;
-  background: white;
+  /* background: white; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -39,7 +39,6 @@
 
 .landing-logo {
   width: 100%;
-  /* top: 20px; */
   max-width: 90vh;
   opacity: 0.08;
   object-fit: contain;
@@ -67,7 +66,7 @@
   } */
   .landing-logo {
   width: 80vw;
-  top: 10px;
+  top: 120px;
   max-width: 90vh;
   opacity: 1.08;
   /* opacity: 0.08; */

@@ -13,11 +13,11 @@
   border-radius: 16px;
   padding: 32px;
   width: 100%;
-  box-shadow:
+  /* box-shadow:
     0 0 10px rgba(0, 0, 0, 0.15),
     0 0 20px rgba(0, 0, 0, 0.08),
     inset 0 0 0 1px rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.08); */
   animation: slideUp 0.3s ease;
 }
 
