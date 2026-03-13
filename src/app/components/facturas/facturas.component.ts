@@ -18,10 +18,8 @@ interface InvoiceResult {
 })
 export class FacturasComponent {
 
-    private http = inject(HttpClient);
- 
-  // ⚠️ Cambia esta URL por la URL de tu webhook de n8n
-  private readonly WEBHOOK_URL = 'https://TU-N8N.com/webhook/invoice';
+  private http = inject(HttpClient);
+  private readonly WEBHOOK_URL = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook-test/invoice';
  
   selectedFile = signal<File | null>(null);
   previewUrl   = signal<string | null>(null);

@@ -4,11 +4,11 @@
       --c-bg: #0f0f0f;
       --c-surface: #181818;
       --c-border: #2a2a2a;
-      --c-accent: #e8ff47;
-      --c-accent2: #47ffb2;
+      --c-accent2: #e8ff47;
+      --c-accent: #47ffff;
       --c-text: #f0f0f0;
       --c-muted: #666;
-      background: var(--c-bg);
+      /* background: var(--c-bg); */
       min-height: 100vh;
       display: flex;
       justify-content: center;
