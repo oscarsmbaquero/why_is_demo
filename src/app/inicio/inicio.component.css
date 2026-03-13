@@ -7,7 +7,7 @@
 .dossier-title {
     font-size: 1.3rem;
     font-weight: 700;
-    color: white;
+    color: #19e6ea;
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
@@ -21,8 +21,8 @@
     margin-bottom: 16px;
     margin-top: 16px;
     background: rgba(255, 255, 255, 0.05) !important;
-    color: #fff !important;
-    border: 2.5px solid #fff !important;
+    color: #19e6ea !important;
+    border: 2px solid #19e6ea !important;
     border-radius: 999px;
     min-width: 160px;
     height: 56px;
@@ -74,15 +74,15 @@
 @keyframes dosierFadeIn {
     from {
         opacity: 0;
-        transform: scale(0.9);
+        transform: scale(0.2);
     }
     to {
         opacity: 1;
-        transform: scale(1);
+        transform: scale(0.6);
     }
 }
 .fondo-inicio {
-    background-image: url('/assets/images/fondo4.avif');
+    background-image: url('/assets/images/fondo5.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,6 +93,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media (max-width: 767px) {
+    .fondo-inicio {
+        background-image: url('/assets/images/fondo5movil.jpg');
+        background-size: cover;
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-color: #111;
+    }
 }
 
 .inicio-logo {
@@ -113,4 +123,20 @@
         opacity: 1;
         transform: scale(1);
     }
+}
+
+.dossier-precios-list {
+  margin-bottom: 16px;
+}
+.dossier-precios-list ul {
+  list-style: disc inside;
+  color: #fff;
+  padding-left: 0;
+  margin: 0;
+  text-align: left;
+}
+.dossier-precios-list li {
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+  line-height: 1.5;
 }

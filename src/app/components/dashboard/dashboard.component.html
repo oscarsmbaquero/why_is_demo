@@ -57,16 +57,14 @@
 
     <!-- Workflows list -->
     <div class="panel">
-      <div class="panel-header">
+      <div class="panel-header" (click)="toggleWorkflowsPanel()" style="cursor:pointer;">
         <h3>Workflows</h3>
         <span class="count-badge">{{ data.workflows.length }}</span>
+        <span style="margin-left:auto;">{{ workflowsPanelCollapsed ? '+' : '-' }}</span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body-collapsible" [ngClass]="{ 'collapsed': workflowsPanelCollapsed }">
         <div *ngIf="data.workflows.length === 0" class="empty-state">No hay workflows.</div>
-        <div
-          class="row-item"
-          *ngFor="let wf of data.workflows; trackBy: trackByWorkflow"
-        >
+        <div *ngFor="let wf of data.workflows; trackBy: trackByWorkflow" class="row-item">
           <div class="row-left">
             <span class="dot" [class.dot-active]="wf.active" [class.dot-inactive]="!wf.active"></span>
             <span class="row-name">{{ wf.name }}</span>
@@ -80,16 +78,14 @@
 
     <!-- Executions list -->
     <div class="panel">
-      <div class="panel-header">
+      <div class="panel-header" (click)="toggleExecutionsPanel()" style="cursor:pointer;">
         <h3>Últimas ejecuciones</h3>
         <span class="count-badge">{{ data.executions.length }}</span>
+        <span style="margin-left:auto;">{{ executionsPanelCollapsed ? '+' : '-' }}</span>
       </div>
-      <div class="panel-body">
+      <div class="panel-body-collapsible" [ngClass]="{ 'collapsed': executionsPanelCollapsed }">
         <div *ngIf="data.executions.length === 0" class="empty-state">No hay ejecuciones.</div>
-        <div
-          class="row-item"
-          *ngFor="let ex of data.executions.slice(0, 20); trackBy: trackByExecution"
-        >
+        <div *ngFor="let ex of data.executions.slice(0, 100); trackBy: trackByExecution" class="row-item">
           <div class="row-left">
             <span class="dot" [class]="getStatusClass(ex.status)"></span>
             <span class="row-name">{{ ex.workflowData?.name ?? ex.workflowId }}</span>

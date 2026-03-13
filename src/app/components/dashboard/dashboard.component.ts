@@ -1,3 +1,5 @@
+// ...existing code...
+// ...existing code...
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { N8nDashboardData, N8nService } from '../../../core/services/n8nService/n8n.service';
@@ -11,7 +13,7 @@ const USE_MOCK = false;
 
 @Component({
   selector: 'app-dashboard',
-   standalone: true,
+  standalone: true,
   imports: [CommonModule, HttpClientModule],
   providers: [N8nService],
   templateUrl: './dashboard.component.html',
@@ -19,17 +21,29 @@ const USE_MOCK = false;
 })
 export class DashboardComponent implements OnInit {
 
-   data: N8nDashboardData | null = null;
+  data: N8nDashboardData | null = null;
   loading = true;
   error: string | null = null;
- 
+
+  // Estado de colapso para cada tabla (cerradas por defecto)
+  workflowsPanelCollapsed = true;
+  executionsPanelCollapsed = true;
+
   constructor(private n8nService: N8nService, private navbarService: NavbarService) {}
- 
+
   ngOnInit(): void {
     this.load();
-     this.navbarService.setSelectedOption('dashboard');
+    this.navbarService.setSelectedOption('dashboard');
   }
- 
+
+  toggleWorkflowsPanel() {
+    this.workflowsPanelCollapsed = !this.workflowsPanelCollapsed;
+  }
+
+  toggleExecutionsPanel() {
+    this.executionsPanelCollapsed = !this.executionsPanelCollapsed;
+  }
+
   load(): void {
     this.loading = true;
     this.error = null;

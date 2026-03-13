@@ -67,7 +67,7 @@ body.Dark {
 }
 
 body.Light {
-  background-color: white;
+  /* background-color: white; */
   color: black;
 }
 
@@ -82,7 +82,7 @@ body.Dark .navbar {
 
 body.Light .navbar {
   margin-top: 10px;
-  background-color: white !important;
+  /* background-color: white !important; */
   color: black;
 
   span {
@@ -127,4 +127,22 @@ button:disabled {
 .light-button{
   border: 1px solid grey;
   color: grey;
+}
+
+html, body {
+  background-image: url('/assets/images/fondo5.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-color: #111 !important;
+}
+
+@media (max-width: 767px) {
+  html, body {
+    background-image: url('/assets/images/fondo5movil.jpg') !important;
+    background-size: cover !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-color: #111 !important;
+  }
 }
