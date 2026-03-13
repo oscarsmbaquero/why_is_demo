@@ -5,7 +5,7 @@ span{
 
 footer {
     /* background-color: rgb(20, 21, 50); */
-    background-color: black;
+    background-color: transparent !important;
   }
   
   /* p, h6{

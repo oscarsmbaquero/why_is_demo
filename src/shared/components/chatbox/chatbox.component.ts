@@ -39,6 +39,7 @@ export class ChatboxComponent implements OnInit {
   showTimePicker = false;
   selectedDate = '';
   selectedTime = '';
+  showInfo = false;
 
   ngOnInit() {
     this.scrollToTop();

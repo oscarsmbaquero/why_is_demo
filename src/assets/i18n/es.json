@@ -168,7 +168,7 @@
   },
   "CONTACT": {
     "TITULO": "Formulario",
-    "SUBTITULO": "Formulario de prueba con cita",
+    "SUBTITULO": "Este formulario simula el flujo completo de reserva de cita. Al enviarlo, se crea el evento automáticamente en Google Calendar y se envía un correo de confirmación al cliente con el enlace para la reunión telemática.",
     "PRIVACIDAD_TEXTO": "Al enviar este formulario, aceptas que tus datos sean utilizados para contactarte sobre tu consulta. Consulta nuestra",
     "PRIVACIDAD_LINK": "política de privacidad",
     "FORM": {
