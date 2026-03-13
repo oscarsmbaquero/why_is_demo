@@ -54,7 +54,7 @@
 }
 
 /* Estilos responsivos para el contenedor principal */
-@media (max-width: 768px) {
+@media (max-width: 424px) {
   .main {
     padding: 0;
   }
@@ -67,7 +67,7 @@
   } */
   .landing-logo {
   width: 80vw;
-  top: 20px;
+  top: 10px;
   max-width: 90vh;
   opacity: 1.08;
   /* opacity: 0.08; */
