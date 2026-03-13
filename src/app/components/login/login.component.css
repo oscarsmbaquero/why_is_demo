@@ -43,6 +43,8 @@
 
 .login-form {
   width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -73,6 +75,16 @@
 
 .form-group input:focus {
   border-color: #333;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  max-width: 320px;
+  min-width: 120px;
+  margin: 0 auto;
+  font-size: 1rem;
+  box-sizing: border-box;
 }
 
 .error-msg {
@@ -197,5 +209,38 @@
     width: 100%;
     padding: 12px 14px;
     font-size: 16px;
+  }
+}
+
+.login-vertical-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  margin-top: 32px;
+  min-height: 80vh;
+}
+
+.landing-logo {
+  max-width: 420px;
+  width: 95vw;
+  margin-bottom: 4px;
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .login-card {
+    max-width: 400px;
+    padding: 40px 32px;
+  }
+  .login-form {
+    max-width: 340px;
+  }
+  .login-form input[type="text"],
+  .login-form input[type="password"] {
+    max-width: 320px;
+    font-size: 1.05rem;
   }
 }
