@@ -99,5 +99,32 @@
           @if (uploading()) { Procesando… } @else { Contabilizar factura }
         </button>
       }
+
+      <!-- Tabla de facturas debajo del área de adjuntar -->
+      @if (facturas().length) {
+        <div style="background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; margin-top: 2rem; padding: 1.5rem;">
+          <h2 style="margin-top:0;">Facturas registradas</h2>
+          <table class="facturas-table" style="width:100%; border-collapse:collapse;">
+            <thead>
+              <tr style="background:#f5f5f5;">
+                <th style="padding:8px; text-align:left;">Número</th>
+                <th style="padding:8px; text-align:left;">Emisor</th>
+                <th style="padding:8px; text-align:left;">Importe</th>
+                <th style="padding:8px; text-align:left;">Enlace</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (factura of facturas(); track factura.mongoId) {
+                <tr>
+                  <td style="padding:8px;">{{ factura.numero_factura }}</td>
+                  <td style="padding:8px;">{{ factura.emisor }}</td>
+                  <td style="padding:8px;">{{ factura.total }}</td>
+                  <td style="padding:8px;"><a [href]="factura.url" target="_blank">Ver archivo</a></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      }
  
     </div>

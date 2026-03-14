@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   // Solo para el chatbox:
   apiUrl: 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/api/chat',
+  apiUrlFacturas: 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/facturas',
   // Solo para dashboard (solo en producción):
   n8nApiUrl: '/n8n-api',
   apiUrlLogin: 'https://why-back-node.vercel.app',

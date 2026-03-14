@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { environment } from "../../../enviroment/environment";
 
@@ -18,5 +18,14 @@ export class ChatService {
     'ngrok-skip-browser-warning': 'true'
   };
   return this.http.post<any>(`${environment.apiUrl}`, { messages, tipo }, { headers });
+}
+
+obtenerFacturas(): Observable<any> {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
+  });
+
+  return this.http.get<any>(`${environment.apiUrlFacturas}`, { headers });
 }
 }

@@ -1,6 +1,9 @@
-import { Component, signal, inject } from '@angular/core';
+
+import { Component, signal, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpEventType } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ChatService } from '../../../core/services/chatService/chat.service';
  
 interface InvoiceResult {
   ok: boolean;
@@ -16,10 +19,11 @@ interface InvoiceResult {
   templateUrl: './facturas.component.html',
   styleUrl: './facturas.component.css'
 })
-export class FacturasComponent {
+export class FacturasComponent implements OnInit{
 
   private http = inject(HttpClient);
-  private readonly WEBHOOK_URL = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook-test/invoice';
+  private chatService = inject(ChatService);
+  private readonly WEBHOOK_URL = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/invoice';
  
   selectedFile = signal<File | null>(null);
   previewUrl   = signal<string | null>(null);
@@ -28,6 +32,19 @@ export class FacturasComponent {
   result       = signal<InvoiceResult | null>(null);
   error        = signal<string | null>(null);
   isDragging   = signal(false);
+  public facturas = signal<any[]>([]);
+
+  ngOnInit(){
+    this.getAll().subscribe({
+      next: data => {
+        this.facturas.set(data);
+        console.log('Facturas:', data);
+      },
+      error: err => {
+        console.error('Error al obtener las facturas:', err);
+      }
+    });
+  }
  
   onFileSelected(event: Event) {
     const input = event.target as HTMLInputElement;
@@ -100,6 +117,10 @@ export class FacturasComponent {
     this.result.set(null);
     this.error.set(null);
     this.progress.set(0);
+  }
+
+  getAll(): Observable<any[]> {
+    return this.chatService.obtenerFacturas();
   }
 }
  
