@@ -8,8 +8,10 @@
       --c-accent: #47ffff;
       --c-text: #f0f0f0;
       --c-muted: #666;
-      /* background: var(--c-bg); */
+      background: var(--c-bg) url('/assets/images/fondo5.jpg') repeat;
+      background-size: auto;
       min-height: 100vh;
+      width: 100vw;
       display: flex;
       justify-content: center;
       padding: 2rem 1rem;

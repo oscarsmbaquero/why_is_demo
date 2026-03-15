@@ -1,130 +1,232 @@
- <div class="scanner-wrap">
- 
-      <div class="header">
-        <span class="logo-dot"></span>
-        <h1>Escáner de facturas</h1>
-      </div>
- 
-      <!-- Drop zone / preview -->
-      <div
-        class="drop-zone"
-        [class.has-image]="previewUrl()"
-        [class.dragging]="isDragging()"
-        (dragover)="onDragOver($event)"
-        (dragleave)="isDragging.set(false)"
-        (drop)="onDrop($event)"
-        (click)="!previewUrl() && fileInput.click()"
-      >
-        @if (previewUrl()) {
-          <img [src]="previewUrl()" alt="Vista previa" class="preview-img" />
-          <button class="clear-btn" (click)="clearImage($event)">✕</button>
-        } @else {
-          <div class="drop-content">
-            <div class="scan-icon">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="6" y="6" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                <rect x="28" y="6" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                <rect x="6" y="28" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
-                <path d="M28 35h14M35 28v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <p class="drop-title">Arrastra la factura aquí</p>
-            <p class="drop-sub">o usa los botones de abajo</p>
-          </div>
-        }
-      </div>
- 
-      <!-- Botones de captura -->
-      <div class="actions">
-        <button class="btn btn-camera" (click)="cameraInput.click()">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="13" r="4" stroke="currentColor" stroke-width="1.5"/></svg>
-          Cámara
-        </button>
-        <button class="btn btn-file" (click)="fileInput.click()">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="1.5"/><polyline points="17 8 12 3 7 8" stroke="currentColor" stroke-width="1.5"/><line x1="12" y1="3" x2="12" y2="15" stroke="currentColor" stroke-width="1.5"/></svg>
-          Galería
-        </button>
-      </div>
- 
-      <!-- Inputs ocultos -->
-      <input #cameraInput type="file" accept="image/*" capture="environment"
-        style="display:none" (change)="onFileSelected($event)" />
-      <input #fileInput type="file" accept="image/*,application/pdf"
-        style="display:none" (change)="onFileSelected($event)" />
- 
-      <!-- Barra de progreso -->
-      @if (uploading()) {
-        <div class="progress-wrap">
-          <div class="progress-bar" [style.width.%]="progress()"></div>
-          <span class="progress-label">{{ progress() < 100 ? 'Procesando con IA…' : 'Guardando…' }}</span>
-        </div>
-      }
- 
-      <!-- Resultado -->
-      @if (result()) {
-        <div class="result-card">
-          <div class="result-header">
-            <span class="check">✓</span>
-            <strong>Factura contabilizada</strong>
-          </div>
-          <div class="result-rows">
-            <div class="result-row">
-              <span class="result-label">Número</span>
-              <span class="result-val">{{ result()!.numero_factura || '—' }}</span>
-            </div>
-            <div class="result-row">
-              <span class="result-label">ID MongoDB</span>
-              <span class="result-val mono">{{ result()!.mongoId }}</span>
-            </div>
-            <div class="result-row">
-              <span class="result-label">Imagen</span>
-              <a [href]="result()!.url" target="_blank" class="result-link">Ver en Cloudinary ↗</a>
-            </div>
-          </div>
-          <button class="btn btn-new" (click)="reset()">Nueva factura</button>
-        </div>
-      }
- 
-      <!-- Error -->
-      @if (error()) {
-        <div class="error-card">
-          <span>⚠ {{ error() }}</span>
-          <button (click)="error.set(null)">✕</button>
-        </div>
-      }
- 
-      <!-- Botón enviar -->
-      @if (selectedFile() && !result()) {
-        <button class="btn btn-submit" [disabled]="uploading()" (click)="submit()">
-          @if (uploading()) { Procesando… } @else { Contabilizar factura }
-        </button>
-      }
+<div class="scanner-wrap">
+  <div class="header">
+    <span class="logo-dot"></span>
+    <h1>Escáner de facturas</h1>
+  </div>
 
-      <!-- Tabla de facturas debajo del área de adjuntar -->
-      @if (facturas().length) {
-        <div style="background: #fff; border-radius: 8px; box-shadow: 0 2px 8px #0001; margin-top: 2rem; padding: 1.5rem;">
-          <h2 style="margin-top:0;">Facturas registradas</h2>
-          <table class="facturas-table" style="width:100%; border-collapse:collapse;">
-            <thead>
-              <tr style="background:#f5f5f5;">
-                <th style="padding:8px; text-align:left;">Número</th>
-                <th style="padding:8px; text-align:left;">Emisor</th>
-                <th style="padding:8px; text-align:left;">Importe</th>
-                <th style="padding:8px; text-align:left;">Enlace</th>
-              </tr>
-            </thead>
-            <tbody>
-              @for (factura of facturas(); track factura.mongoId) {
-                <tr>
-                  <td style="padding:8px;">{{ factura.numero_factura }}</td>
-                  <td style="padding:8px;">{{ factura.emisor }}</td>
-                  <td style="padding:8px;">{{ factura.total }}</td>
-                  <td style="padding:8px;"><a [href]="factura.url" target="_blank">Ver archivo</a></td>
-                </tr>
-              }
-            </tbody>
-          </table>
+  <!-- Drop zone / preview -->
+  <div
+    class="drop-zone"
+    [class.has-image]="previewUrl()"
+    [class.dragging]="isDragging()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="isDragging.set(false)"
+    (drop)="onDrop($event)"
+    (click)="!previewUrl() && fileInput.click()"
+  >
+    @if (previewUrl()) {
+      <img [src]="previewUrl()" alt="Vista previa" class="preview-img" />
+      <button class="clear-btn" (click)="clearImage($event)">✕</button>
+    } @else {
+      <div class="drop-content">
+        <div class="scan-icon">
+          <svg
+            viewBox="0 0 48 48"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect
+              x="6"
+              y="6"
+              width="14"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <rect
+              x="28"
+              y="6"
+              width="14"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <rect
+              x="6"
+              y="28"
+              width="14"
+              height="14"
+              rx="2"
+              stroke="currentColor"
+              stroke-width="2"
+            />
+            <path
+              d="M28 35h14M35 28v14"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+            />
+          </svg>
         </div>
-      }
- 
+        <p class="drop-title">Arrastra la factura aquí</p>
+        <p class="drop-sub">o usa los botones de abajo</p>
+      </div>
+    }
+  </div>
+
+  <!-- Botones de captura -->
+  <div class="actions">
+    <button class="btn btn-camera" (click)="cameraInput.click()">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <circle
+          cx="12"
+          cy="13"
+          r="4"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+      </svg>
+      Cámara
+    </button>
+    <button class="btn btn-file" (click)="fileInput.click()">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path
+          d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <polyline
+          points="17 8 12 3 7 8"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+        <line
+          x1="12"
+          y1="3"
+          x2="12"
+          y2="15"
+          stroke="currentColor"
+          stroke-width="1.5"
+        />
+      </svg>
+      Galería
+    </button>
+  </div>
+
+  <!-- Inputs ocultos -->
+  <input
+    #cameraInput
+    type="file"
+    accept="image/*"
+    capture="environment"
+    style="display: none"
+    (change)="onFileSelected($event)"
+  />
+  <input
+    #fileInput
+    type="file"
+    accept="image/*,application/pdf"
+    style="display: none"
+    (change)="onFileSelected($event)"
+  />
+
+  <!-- Barra de progreso -->
+  @if (uploading()) {
+    <div class="progress-wrap">
+      <div class="progress-bar" [style.width.%]="progress()"></div>
+      <span class="progress-label">{{
+        progress() < 100 ? "Procesando con IA…" : "Guardando…"
+      }}</span>
     </div>
+  }
+
+  <!-- Resultado -->
+  @if (result()) {
+    <div class="result-card">
+      <div class="result-header">
+        <span class="check">✓</span>
+        <strong>Factura contabilizada</strong>
+      </div>
+      <div class="result-rows">
+        <div class="result-row">
+          <span class="result-label">Número</span>
+          <span class="result-val">{{ result()!.numero_factura || "—" }}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">ID MongoDB</span>
+          <span class="result-val mono">{{ result()!.mongoId }}</span>
+        </div>
+        <div class="result-row">
+          <span class="result-label">Imagen</span>
+          <a [href]="result()!.url" target="_blank" class="result-link"
+            >Ver en Cloudinary ↗</a
+          >
+        </div>
+      </div>
+      <button class="btn btn-new" (click)="reset()">Nueva factura</button>
+    </div>
+  }
+
+  <!-- Error -->
+  @if (error()) {
+    <div class="error-card">
+      <span>⚠ {{ error() }}</span>
+      <button (click)="error.set(null)">✕</button>
+    </div>
+  }
+
+  <!-- Botón enviar -->
+  @if (selectedFile() && !result()) {
+    <button class="btn btn-submit" [disabled]="uploading()" (click)="submit()">
+      @if (uploading()) {
+        Procesando…
+      } @else {
+        Contabilizar factura
+      }
+    </button>
+  }
+  <div class="header">
+    <span class="logo-dot"></span>
+    <h1>Listado de facturas</h1>
+  </div>
+
+  <div class="card mb-5">
+    <p-table [value]="facturas()" [tableStyle]="{ 'min-width': '50rem' }">
+      <ng-template pTemplate="header" let-columns>
+        <tr>
+          <th>Número</th>
+          <th>Emisor</th>
+          <th>Importe</th>
+          <th>Enlace</th>
+          <th>Estado</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-product let-columns="columns">
+        <tr>
+          <td>
+            {{ product.numero_factura }}
+          </td>
+          <td>
+            {{ product.emisor }}
+          </td>
+          <td>
+            {{ product.total }}
+          </td>
+          <td>
+            <a [href]="product.url" target="_blank">Ver archivo</a>
+          </td>
+          <td>
+              <span
+                class="product-badge"
+                [ngClass]="product.completa ? 'instock' : 'lowstock'"
+                [title]="product.completa ? 'Factura completada' : 'Factura pendiente'"
+                >
+                @if (product.completa) {
+                  <span style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Completada</span>
+                } @else {
+                  <span style="color: #fff; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
+                }
+              </span>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
