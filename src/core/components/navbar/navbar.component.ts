@@ -17,6 +17,7 @@ import { AuthService } from '../../services/authService/auth.service';
   styleUrl: './navbar.component.css',
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  navbarScrolled = false;
   userActive: any;
 
   currentTheme = 'Light';
@@ -42,21 +43,22 @@ export class NavbarComponent implements OnInit, OnDestroy {
     public authService: AuthService
   ) {}
 
+  private scrollHandler = this.onScroll.bind(this);
+
   ngOnInit(): void {
+    window.addEventListener('scroll', this.scrollHandler);
     this.subscription = this.navbarService.selectedOption$.subscribe(
-      (option) => {
+      (option: any) => {
         this.selectedOption = option;
       }
     );
-    this.usersService.getCurrentUser().subscribe((user) => {
+    this.usersService.getCurrentUser().subscribe((user: any) => {
       this.userActive = user?.user || '';
-      console.log(this.userActive, 'navbar');
     });
     this.translate.setDefaultLang('es');
-    this.translationService.getCurrentLanguage().subscribe((lang) => {
+    this.translationService.getCurrentLanguage().subscribe((lang: any) => {
       this.currentLanguage = lang;
       this.textoIdioma = lang.charAt(0).toUpperCase() + lang.slice(1);
-      console.log(this.currentLanguage);
     });
     // Solo selecciona 'inicio' si no hay una opción guardada previamente
     setTimeout(() => {
@@ -66,8 +68,13 @@ export class NavbarComponent implements OnInit, OnDestroy {
     }, 0);
   }
 
+  onScroll() {
+    this.navbarScrolled = window.scrollY > 60;
+  }
+
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    window.removeEventListener('scroll', this.scrollHandler);
   }
 
   selectOption(option: string) {

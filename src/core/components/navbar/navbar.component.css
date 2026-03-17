@@ -1,3 +1,20 @@
+.navbar-scrolled {
+  background: rgba(0,0,0,0.95) !important;
+  transition: background 0.3s;
+  box-shadow: 0 2px 16px #0008;
+}
+/* .container-logo{
+  top: 0;
+  padding: 0;
+  background: rgba(20, 20, 20, 0.65);
+  border-radius: 50px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.18);
+  backdrop-filter: blur(8px) saturate(1.2);
+  border: 1.5px solid rgba(180, 200, 255, 0.18);
+  transition: background 0.2s, box-shadow 0.2s;
+} */
+
+
 @media (min-width: 768px) {
   .navbar-nav .nav-link,
   .navbar-nav .nav-item > a,

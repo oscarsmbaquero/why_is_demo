@@ -1,5 +1,5 @@
 <!-- style="background-color: rgb(20, 20, 20)" -->
-<nav class="navbar navbar-expand-md fixed-top border-custom">
+<nav class="navbar navbar-expand-md fixed-top border-custom" [ngClass]="navbarScrolled ? 'navbar-scrolled' : ''">
   <div class="container-fluid">
     <!-- <a class="navbar-brand" href="#">
       &nbsp;<span class="text-info">ZSS</span>&nbsp;<span
@@ -9,7 +9,9 @@
     </a> -->
     <!-- <img src="../../../assets/images/logo2.png" width="120px" /> -->
      <!-- <app-popup></app-popup> -->
-       <img *ngIf="authService.isLoggedIn()" src="../../../assets/images/logo_inicio.png" width="150px" class="ps-3 pt-1">
+       <div *ngIf="authService.isLoggedIn()" class="container-logo">
+         <img  src="../../../assets/images/logo_inicio.png" width="150px" class="ps-3 pt-1">
+       </div>
     <button
       *ngIf="authService.isLoggedIn()"
       class="navbar-toggler"
