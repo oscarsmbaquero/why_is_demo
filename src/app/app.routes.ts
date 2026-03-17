@@ -6,6 +6,7 @@ import { PrivacyPolicyComponent } from '../shared/components/privacy-policy/priv
 import { FacturasComponent } from './components/facturas/facturas.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ProyectosComponent } from './components/proyectos/proyectos.component';
 
 
 export const routes: Routes = [
@@ -51,6 +52,17 @@ export const routes: Routes = [
       seo: {
         title: 'Dashboard n8n | WHY? IA',
         description: 'Panel de control de workflows y ejecuciones de n8n.',
+        robots: 'noindex,nofollow',
+      },
+    },
+  },
+  {
+    path: "proyectos",
+    component: ProyectosComponent,
+    data: {
+      seo: {
+        title: 'Proyectos | WHY? IA',
+        description: 'Panel de control de proyectos y ejecuciones de n8n.',
         robots: 'noindex,nofollow',
       },
     },

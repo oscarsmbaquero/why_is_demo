@@ -1,0 +1,18 @@
+<div class="proyectos-container">
+	<h2 class="proyectos-title">"Soluciones que hemos desarrollado"</h2>
+	<div class="proyectos-grid">
+		<div class="proyecto-card" *ngFor="let proyecto of proyectos">
+			<img [src]="proyecto.image" [alt]="proyecto.title" class="proyecto-img" />
+			<div class="proyecto-info">
+				<h3 class="proyecto-nombre">{{ proyecto.title }}</h3>
+				<button *ngIf="proyecto.type && proyecto.type.startsWith('http')" class="proyecto-link" (click)="openProject(proyecto.type)">Ver proyecto</button>
+				<button class="collapse-btn" (click)="toggleCollapse(proyecto)">
+					{{ proyecto.expanded ? '- info' : '+ info' }}
+				</button>
+				<div class="collapse-content" *ngIf="proyecto.expanded">
+					<p>{{ proyecto.description || 'Descripción no disponible para este proyecto.' }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -90,7 +90,7 @@
             </a>
           </li>
           <li class="navbar-divider"></li>
-            <li
+          <li
               (click)="selectOption('facturas')"
               [class.selected]="selectedOption === 'facturas'"
               class="nav-item"
@@ -106,7 +106,8 @@
               >
                 <span class="navbar-uppercase">Facturas</span>
               </a>
-            </li>
+          </li>
+          <li class="navbar-divider"></li>
           <li
             (click)="selectOption('contact')"
             [class.selected]="selectedOption === 'contact'"
@@ -125,7 +126,7 @@
             </a>
           </li>
           <li class="navbar-divider"></li>
-            <li
+          <li
             class="nav-item"
             (click)="selectOption('dashboard')"
             [class.selected]="selectedOption === 'dashboard'"
@@ -143,38 +144,25 @@
             </a>
           </li>
           <li class="navbar-divider"></li>
-          <!--
           <li
             class="nav-item"
-            (click)="selectOption('software')"
-            [class.selected]="selectedOption === 'software'"
+            (click)="selectOption('proyectos')"
+             [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
+            [class.selected]="selectedOption === 'proyectos'"
           >
             <a
               class="nav-link"
-              href="javascript:void(0)"
+              [routerLink]="['/proyectos']"
+              (click)="$event.preventDefault()"
+              style="cursor: pointer"
               data-toggle="collapse"
               data-target=".navbar-collapse.show"
               data-bs-dismiss="offcanvas"
             >
-              <span class="navbar-uppercase">{{ "NAVBAR.SOFTWARE" | translate}}</span>
+              <span class="navbar-uppercase">Proyectos</span>
             </a>
           </li>
           <li class="navbar-divider"></li>
-          <li
-            class="nav-item"
-            (click)="selectOption('about')"
-            [class.selected]="selectedOption === 'about'"
-          >
-            <a
-              class="nav-link"
-              href="javascript:void(0)"
-              data-toggle="collapse"
-              data-target=".navbar-collapse.show"
-              data-bs-dismiss="offcanvas"
-            >
-              <span class="navbar-uppercase">{{ "NAVBAR.ABOUT" | translate}}</span>
-            </a>
-          </li> -->
           </ng-container>
           <li class="nav-item login-item">
             <a
