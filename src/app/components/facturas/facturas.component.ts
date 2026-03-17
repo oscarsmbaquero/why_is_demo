@@ -5,6 +5,7 @@ import { HttpClient, HttpClientModule, HttpEventType } from '@angular/common/htt
 import { Observable } from 'rxjs';
 import { ChatService } from '../../../core/services/chatService/chat.service';
 import { TableModule } from 'primeng/table';
+import { SkeletonModule } from 'primeng/skeleton';
 
 interface InvoiceResult {
   ok: boolean;
@@ -17,7 +18,7 @@ interface InvoiceResult {
 @Component({
   selector: 'app-facturas',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, TableModule],
+  imports: [CommonModule, HttpClientModule, TableModule, SkeletonModule],
   templateUrl: './facturas.component.html',
   styleUrl: './facturas.component.css'
 })
@@ -36,14 +37,18 @@ export class FacturasComponent implements OnInit{
   isDragging   = signal(false);
   //TODO : TIPAR
   public facturas = signal<any[]>([]);
+  isLoading = true;
+  skeletonRows = Array(5).fill({});
 
   ngOnInit(){
     this.getAll().subscribe({
       next: data => {
         this.facturas.set(data);
+        this.isLoading = false;
         console.log('Facturas:', data);
       },
       error: err => {
+        this.isLoading = false;
         console.error('Error al obtener las facturas:', err);
       }
     });

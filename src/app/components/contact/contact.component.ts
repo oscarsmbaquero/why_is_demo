@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../enviroment/environment';
 import { HttpClient } from '@angular/common/http';
+import { weekdayValidator, timeRangeValidator } from '../../../core/utils/validators';
 
 @Component({
   selector: 'app-contact',
@@ -50,12 +51,12 @@ export class ContactComponent {
       this.contactForm.patchValue({ cita: true });
       this.contactForm
         .get('fecha')
-        ?.setValidators([Validators.required, this.weekdayValidator()]);
+        ?.setValidators([Validators.required, weekdayValidator()]);
       this.contactForm
         .get('hora')
         ?.setValidators([
           Validators.required,
-          this.timeRangeValidator(this.appointmentStartTime, this.appointmentEndTime),
+          timeRangeValidator(this.appointmentStartTime, this.appointmentEndTime),
         ]);
     } else {
       this.contactForm.patchValue({ cita: false });
@@ -68,32 +69,6 @@ export class ContactComponent {
     this.contactForm.get('hora')?.updateValueAndValidity();
   }
 
-  weekdayValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) {
-        return null;
-      }
-
-      const dateValue = new Date(`${control.value}T00:00:00`);
-      const day = dateValue.getDay();
-      const isWeekday = day >= 1 && day <= 5;
-
-      return isWeekday ? null : { weekdayOnly: true };
-    };
-  }
-
-  timeRangeValidator(start: string, end: string): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) {
-        return null;
-      }
-
-      const selectedTime = control.value;
-      const inRange = selectedTime >= start && selectedTime <= end;
-
-      return inRange ? null : { businessHoursOnly: true };
-    };
-  }
 
   getTodayDate(): string {
     const today = new Date();
