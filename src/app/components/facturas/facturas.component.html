@@ -111,7 +111,18 @@
   </div>
 
   <div class="card mb-5">
-    <p-table [value]="isLoading ? skeletonRows : facturas()" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="isLoading ? skeletonRows : facturas()" [paginator]="true" [rows]="10"
+      [globalFilterFields]="['emisor', 'numero_factura']" [tableStyle]="{ 'min-width': '50rem' }" #dt2>
+      <ng-template #caption>
+        <div class="flex">
+          <p-iconfield iconPosition="left" class="ms-auto">
+            <p-inputicon class="me-2">
+              <i class="pi pi-search"></i>
+            </p-inputicon>
+            <input pInputText type="text" (input)="onGlobalFilter($event, dt2)" placeholder="Buscar factura o emisor" />
+          </p-iconfield>
+        </div>
+      </ng-template>
       <ng-template pTemplate="header" let-columns>
         <tr>
           <th>Número</th>
@@ -131,9 +142,11 @@
             <span class="product-badge" [ngClass]="product.completa ? 'instock' : 'lowstock'"
               [title]="product.completa ? 'Factura completada' : 'Factura pendiente'">
               @if (product.completa) {
-                <span style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Completada</span>
+              <span
+                style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Completada</span>
               } @else {
-                <span style="color: #fff; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
+              <span
+                style="color: #fff; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
               }
             </span>
           </td>

@@ -1,4 +1,5 @@
 
+
 import { Component, signal, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpEventType } from '@angular/common/http';
@@ -6,6 +7,8 @@ import { Observable } from 'rxjs';
 import { ChatService } from '../../../core/services/chatService/chat.service';
 import { TableModule } from 'primeng/table';
 import { SkeletonModule } from 'primeng/skeleton';
+import { InputIconModule } from 'primeng/inputicon';
+import { IconFieldModule } from 'primeng/iconfield';
 
 interface InvoiceResult {
   ok: boolean;
@@ -18,11 +21,16 @@ interface InvoiceResult {
 @Component({
   selector: 'app-facturas',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, TableModule, SkeletonModule],
+  imports: [CommonModule, HttpClientModule, TableModule, SkeletonModule, InputIconModule, IconFieldModule],
   templateUrl: './facturas.component.html',
   styleUrl: './facturas.component.css'
 })
-export class FacturasComponent implements OnInit{
+export class FacturasComponent implements OnInit {
+  onGlobalFilter(event?: Event, dt?: any) {
+    if (!event || !dt) return;
+    const input = event.target as HTMLInputElement | null;
+    dt.filterGlobal(input?.value || '', 'contains');
+  }
 
   private http = inject(HttpClient);
   private chatService = inject(ChatService);
