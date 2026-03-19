@@ -10,7 +10,8 @@
     font-size: 1.3rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    margin-top: 50px;
     letter-spacing: 1px;
 }
 .dossier-btns {
@@ -51,6 +52,9 @@
     .inicio-content {
         padding-top: 32px;
     }
+    .dossier-title {
+    margin-top: 0px;    
+}
 }
 .inicio-content {
     display: flex;

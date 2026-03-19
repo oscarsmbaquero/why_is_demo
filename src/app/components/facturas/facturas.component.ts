@@ -1,5 +1,3 @@
-
-
 import { Component, signal, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule, HttpEventType } from '@angular/common/http';
@@ -15,7 +13,7 @@ interface InvoiceResult {
   mongoId: string;
   url: string;
   numero_factura: string;
-  completa: boolean;
+  contabilizada: boolean;
 }
 
 @Component({
@@ -35,6 +33,8 @@ export class FacturasComponent implements OnInit {
   private http = inject(HttpClient);
   private chatService = inject(ChatService);
   private readonly WEBHOOK_URL = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/invoice';
+  private readonly WEBHOOK_URL_CONTABILIZAR = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook/update-factura';
+  private readonly WEBHOOK_URL_TEST = 'https://abolitionary-verline-erethismic.ngrok-free.dev/webhook-test/update-factura';
  
   selectedFile = signal<File | null>(null);
   previewUrl   = signal<string | null>(null);
@@ -165,6 +165,33 @@ export class FacturasComponent implements OnInit {
     img.onerror = () => reject(new Error('Error cargando imagen'));
     img.src = url;
   });
+}
+
+  // Maneja el cambio de checkbox para contabilizar
+ onContabilizarChange(product: any, event: Event) {
+  this.uploading.set(true);
+  this.progress.set(0);
+
+  // Progreso simulado mientras espera respuesta
+  const interval = setInterval(() => {
+    if (this.progress() < 85) this.progress.update(v => v + 5);
+  }, 200);
+
+  this.http.post<InvoiceResult>(this.WEBHOOK_URL, { _id: product._id })
+    .subscribe({
+      next: result => {
+        clearInterval(interval);
+        this.progress.set(100);
+        this.result.set(result);
+        this.uploading.set(false);
+      },
+      error: err => {
+        clearInterval(interval);
+        this.error.set('Error al procesar la factura. Revisa la conexión con n8n.');
+        this.uploading.set(false);
+        console.error(err);
+      }
+    });
 }
 }
  

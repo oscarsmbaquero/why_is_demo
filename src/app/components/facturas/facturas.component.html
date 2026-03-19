@@ -130,25 +130,29 @@
           <th>Importe</th>
           <th>Enlace</th>
           <th>Estado</th>
+          <th>Contabilizar</th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-product let-columns="columns">
         <tr *ngIf="!isLoading; else skeletonRow">
-          <td>{{ product.numero_factura }}</td>
+          <td [ngClass]="{'incompleta-factura': !product.completa}">{{ product.numero_factura }}</td>
           <td>{{ product.emisor }}</td>
           <td>{{ product.total }}</td>
           <td><a [href]="product.url" target="_blank">Ver archivo</a></td>
           <td>
-            <span class="product-badge" [ngClass]="product.completa ? 'instock' : 'lowstock'"
-              [title]="product.completa ? 'Factura completada' : 'Factura pendiente'">
-              @if (product.completa) {
+            <span class="product-badge" [ngClass]="product.contabilizada ? 'instock' : 'lowstock'"
+              [title]="product.contabilizada ? 'Factura contabilizada' : 'Factura pendiente'">
+              @if (product.contabilizada) {
               <span
-                style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Completada</span>
+                style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Contabilizada</span>
               } @else {
               <span
                 style="color: #fff; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
               }
             </span>
+          </td>
+          <td>
+            <input type="checkbox" [checked]="product.contabilizada" (change)="onContabilizarChange(product, $event)" />
           </td>
         </tr>
         <ng-template #skeletonRow>

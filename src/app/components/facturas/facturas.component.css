@@ -1,3 +1,9 @@
+  /* Resalta la factura incompleta en tono rojizo */
+  .incompleta-factura {
+    /* background: #ffebee !important; */
+    color: #c62828 !important;
+    font-weight: bold;
+  }
   /* Ajuste para el input de búsqueda con icono */
   p-iconfield input[type="text"],
   .p-iconfield input[type="text"] {
