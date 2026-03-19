@@ -137,6 +137,34 @@ html, body {
   background-color: #111 !important;
 }
 
+/* estilos para tooltio */
+.info-tooltip {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(30, 30, 30, 0.95);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  font-size: 0.95rem;
+  min-width: 220px;
+  z-index: 10;
+  white-space: normal;
+  text-align: left;
+}
+.info-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent rgba(30,30,30,0.95) transparent;
+}
+
 @media (max-width: 767px) {
   html, body {
     background-image: url('/assets/images/fondo5movil.jpg') !important;

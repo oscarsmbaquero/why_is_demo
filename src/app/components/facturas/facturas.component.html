@@ -2,6 +2,24 @@
   <div class="header">
     <span class="logo-dot"></span>
     <h1>Escáner de facturas</h1>
+    <span class="info-tooltip-wrapper position-relative ms-2">
+      <span class="info-icon" tabindex="0" (click)="showInfo = !showInfo" (blur)="showInfo = false">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="11" cy="11" r="10" fill="#2196f3" stroke="#1565c0" stroke-width="2" />
+          <text x="11" y="16" text-anchor="middle" font-size="14" font-family="Arial, Helvetica, sans-serif" fill="#fff"
+            font-weight="bold">i</text>
+        </svg>
+      </span>
+      <span class="info-tooltip" *ngIf="showInfo">
+        Sube tus facturas de forma sencilla desde la galería del dispositivo o
+        como archivo adjunto. La factura se guarda automáticamente en la nube
+        y todos los datos quedan registrados en base de datos. Una vez procesada,
+        se muestra una tabla interactiva donde puedes filtrar facturas, consultar
+        las que están incompletas y cambiar el estado a contabilizada. Sin
+        complicaciones, sin pasos innecesarios. Sube el archivo, y la factura
+        queda registrada, almacenada y lista para su gestión contable.
+      </span>
+    </span>
   </div>
 
   <!-- Drop zone / preview -->
@@ -61,8 +79,7 @@
       progress() < 100 ? "Procesando con IA…" : "Guardando…" }}</span>
   </div>
   }
-
-  <!-- Resultado -->
+  <!--Resultado añadir facturas-->
   @if (result()) {
   <div class="result-card">
     <div class="result-header">
@@ -86,6 +103,21 @@
     <button class="btn btn-new" (click)="reset()">Nueva factura</button>
   </div>
   }
+  <!-- Resultado Facturas -->
+  @if (resultFactura()) {
+  <div class="result-card">
+    <div class="result-header">
+      <span class="check">✓</span>
+      <strong>Factura modificada</strong>
+    </div>
+    <div class="result-rows">
+      <div class="result-row">
+        <span class="result-label">Número</span>
+        <span class="result-val">{{ resultFactura()!.numero_factura || "—" }}</span>
+      </div>
+    </div>
+  </div>
+  }
 
   <!-- Error -->
   @if (error()) {
@@ -96,30 +128,29 @@
   }
 
   <!-- Botón enviar -->
-  @if (selectedFile() && !result()) {
-  <button class="btn btn-submit" [disabled]="uploading()" (click)="submit()">
-    @if (uploading()) {
-    Procesando…
-    } @else {
-    Contabilizar factura
-    }
+  @if (selectedFile()) {
+  <button class="btn btn-submit" [disabled]="uploading()" (click)="submit()">Añadir factura
   </button>
   }
   <div class="header">
     <span class="logo-dot"></span>
-    <h1>Listado de facturas</h1>
+    <h1>Totales</h1>
+     <div class="totales">
+          <div class="conta">{{ totalContabilizadas()}} €</div>
+          <div class="desconta">{{ totalSinContabilizar() }} €</div>
+        </div>
   </div>
 
-  <div class="card mb-5">
+  <div class="card mb-5" style="border: none;">
     <p-table [value]="isLoading ? skeletonRows : facturas()" [paginator]="true" [rows]="10"
-      [globalFilterFields]="['emisor', 'numero_factura']" [tableStyle]="{ 'min-width': '50rem' }" #dt2>
+      [globalFilterFields]="['emisor', 'numero_factura']" [tableStyle]="{ 'min-width': '40rem' }" #dt2>
       <ng-template #caption>
-        <div class="flex">
-          <p-iconfield iconPosition="left" class="ms-auto">
+        <div style="display: flex; align-items: center; gap: 1rem; width: 100%;">
+          <p-iconfield iconPosition="left" style="min-width: 220px; max-width: 300px; width: 100%;">
             <p-inputicon class="me-2">
               <i class="pi pi-search"></i>
             </p-inputicon>
-            <input pInputText type="text" (input)="onGlobalFilter($event, dt2)" placeholder="Buscar factura o emisor" />
+            <input pInputText type="text" (input)="onGlobalFilter($event, dt2)" placeholder="Buscar factura o emisor" style="width:clamp(140px,40vw,420px); max-width:100%; min-width:100px;" />
           </p-iconfield>
         </div>
       </ng-template>
@@ -135,7 +166,8 @@
       </ng-template>
       <ng-template pTemplate="body" let-product let-columns="columns">
         <tr *ngIf="!isLoading; else skeletonRow">
-          <td [ngClass]="{'incompleta-factura': !product.completa}">{{ product.numero_factura }}</td>
+          <td [ngClass]="{'incompleta-factura': !product.completa}" style="min-width: 120px; white-space: nowrap;">{{
+            product.numero_factura }}</td>
           <td>{{ product.emisor }}</td>
           <td>{{ product.total }}</td>
           <td><a [href]="product.url" target="_blank">Ver archivo</a></td>
@@ -144,15 +176,16 @@
               [title]="product.contabilizada ? 'Factura contabilizada' : 'Factura pendiente'">
               @if (product.contabilizada) {
               <span
-                style="color: #fff; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Contabilizada</span>
+                style="color: #000; background: #28a745; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Contabilizada</span>
               } @else {
               <span
-                style="color: #fff; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
+                style="color: #000; background: #ffc107; padding: 2px 8px; border-radius: 8px; font-weight: 500;">Pendiente</span>
               }
             </span>
           </td>
-          <td>
-            <input type="checkbox" [checked]="product.contabilizada" (change)="onContabilizarChange(product, $event)" />
+          <td class="text-center">
+            <input type="checkbox" [checked]="product.contabilizada" [disabled]="product.contabilizada"
+              (change)="onContabilizarChange(product)" />
           </td>
         </tr>
         <ng-template #skeletonRow>
@@ -162,9 +195,18 @@
             <td><p-skeleton width="80px" height="1.5em" [ngStyle]="{ margin: '0.2em 0' }" /></td>
             <td><p-skeleton width="90px" height="1.5em" [ngStyle]="{ margin: '0.2em 0' }" /></td>
             <td><p-skeleton width="90px" height="1.5em" [ngStyle]="{ margin: '0.2em 0' }" /></td>
+            <td><p-skeleton width="90px" height="1.5em" [ngStyle]="{ margin: '0.2em 0' }" /></td>
           </tr>
         </ng-template>
       </ng-template>
     </p-table>
+    <!-- Barra de progreso de modificar factura -->
+    @if (uploadingFactura()) {
+    <div class="progress-wrap">
+      <div class="progress-bar" [style.width.%]="progress()"></div>
+      <span class="progress-label">{{
+        progress() < 100 ? "Modificando Factura" : "Guardando…" }}</span>
+    </div>
+    }
   </div>
 </div>
