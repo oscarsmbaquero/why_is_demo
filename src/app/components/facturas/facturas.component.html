@@ -132,14 +132,28 @@
   <button class="btn btn-submit" [disabled]="uploading()" (click)="submit()">Añadir factura
   </button>
   }
-  <div class="header">
+  <!-- <div class="header">
     <span class="logo-dot"></span>
     <h1>Totales</h1>
      <div class="totales">
           <div class="conta">{{ totalContabilizadas()}} €</div>
           <div class="desconta">{{ totalSinContabilizar() }} €</div>
         </div>
-  </div>
+  </div> -->
+  <div class="header">
+  <span class="logo-dot"></span>
+    <h1>Totales</h1>
+    </div>
+  <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-label">Total Contabilizado</span>
+        <span class="metric-value">{{ totalContabilizadas().toFixed(2) }} €</span>
+      </div>
+      <div class="metric-card metric-active">
+        <span class="metric-label">Total Sin Contabilizar</span>
+        <span class="metric-value">{{ totalSinContabilizar().toFixed(2) }} €</span>
+      </div>
+    </div>
 
   <div class="card mb-5" style="border: none;">
     <p-table [value]="isLoading ? skeletonRows : facturas()" [paginator]="true" [rows]="10"
