@@ -94,6 +94,23 @@
           </li>
           <li class="navbar-divider"></li>
           <li
+            class="nav-item"
+            [ngClass]="themeService.theme() === 'Dark' ? 'dark' : ' '"
+             [class.selected]="selectedOption === 'instagram-ia'"
+          >
+            <a
+              class="nav-link"
+                [routerLink]="['/instagram-ia']"
+              style="cursor: pointer"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+              data-bs-dismiss="offcanvas"
+            >
+              <span class="navbar-uppercase">Instagram</span>
+            </a>
+          </li>
+          <li class="navbar-divider"></li>
+          <li
               (click)="selectOption('facturas')"
               [class.selected]="selectedOption === 'facturas'"
               class="nav-item"
@@ -125,7 +142,7 @@
               data-target=".navbar-collapse.show"
               data-bs-dismiss="offcanvas"
             >
-              <span class="navbar-uppercase">{{ "NAVBAR.CONTACTO" | translate}}</span>
+              <span class="navbar-uppercase">Formulario</span>
             </a>
           </li>
           <li class="navbar-divider"></li>

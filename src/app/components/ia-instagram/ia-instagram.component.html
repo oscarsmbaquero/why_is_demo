@@ -1,0 +1,165 @@
+<!-- ══════════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════════ -->
+<section class="hero">
+    <p class="hero-eyebrow">Automatización · Inteligencia Artificial · Instagram</p>
+    <h1>
+        Publica stories cada día<br />
+        <span class="gradient-text">sin tocar el móvil</span>
+    </h1>
+    <p class="hero-sub">
+        Una demo técnica que conecta n8n, modelos de IA generativa y la API de Instagram
+        para publicar contenido visual de forma completamente autónoma, todos los días.
+    </p>
+    <div class="hero-tags">
+        <span class="tag">make Workflows</span>
+        <span class="tag">OpenAI / Claude</span>
+        <span class="tag">Instagram Graph API</span>
+        <span class="tag">Automatización visual</span>
+        <span class="tag">Sin intervención manual</span>
+    </div>
+</section>
+<!-- ══════════════════════════════════════════════════
+       ¿QUÉ ES ESTO?
+  ══════════════════════════════════════════════════ -->
+<section>
+    <p class="section-label">El proyecto</p>
+    <h2 class="section-title">Un pipeline de IA que trabaja mientras duermes</h2>
+    <p class="section-body">
+        Esta demo muestra cómo construir un sistema completamente automatizado capaz de generar,
+        diseñar y publicar Instagram Stories a diario sin ninguna intervención humana.
+        El flujo combina herramientas de IA generativa para crear el texto y la imagen,
+        y n8n como motor de orquestación para encadenar cada paso en el momento exacto.
+        <br /><br />
+        No se trata de programar stories manualmente; se trata de enseñarle al sistema
+        <em>qué contar</em> y dejar que él decida <em>cómo y cuándo</em> contarlo.
+    </p>
+</section>
+<!-- ══════════════════════════════════════════════════
+       4 FOTOS
+  ══════════════════════════════════════════════════ -->
+<section>
+    <p class="section-label">Capturas del proceso</p>
+    <h2 class="section-title">El workflow en imágenes</h2>
+    <p class="section-body">
+        Desde el diseño del flujo en n8n hasta el resultado final en Instagram,
+        estas imágenes documentan las distintas fases del sistema en acción.
+    </p>
+
+    <div class="photo-grid">
+
+        <!-- FOTO 1 — sustituye el div.photo-placeholder por <img src="tu-foto-1.jpg" alt="..." /> -->
+        <div class="photo-card">
+            <div class="photo-placeholder">
+                <img src="assets/images/flujo_insta.jpeg" alt="..." />
+                <!-- <strong>Foto 1</strong>
+          Flujo completo en n8n -->
+            </div>
+            <div class="photo-caption">Vista general del workflow en make</div>
+        </div>
+
+        <!-- FOTO 2 -->
+        <div class="photo-card">
+            <div class="photo-placeholder">
+                <img src="assets/images/flujo_insta2.jpeg" alt="..." />
+            </div>
+            <div class="photo-caption">Configuración del nodo de IA generativa</div>
+        </div>
+    </div>
+</section>
+<!-- ══════════════════════════════════════════════════
+       VÍDEO DEMO
+  ══════════════════════════════════════════════════ -->
+<section>
+    <p class="section-label">Demo en vídeo</p>
+    <h2 class="section-title">Míralo correr en tiempo real</h2>
+    <p class="section-body">
+        El siguiente vídeo muestra una ejecución completa del workflow: desde que el scheduler
+        dispara el trigger hasta que la story aparece publicada en Instagram,
+        pasando por cada nodo del pipeline de IA.
+    </p>
+
+    <!-- VIDEO — sustituye todo el div.video-placeholder por tu elemento <video> o <iframe> -->
+    <div class="video-wrap">
+        <video #myVideo src="assets/images/video_flujo_insta.mp4" loop playsinline></video>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+       DETALLES DEL PIPELINE N8N
+  ══════════════════════════════════════════════════ -->
+<section>
+    <p class="section-label">Bajo el capó</p>
+    <h2 class="section-title">Anatomía del workflow n8n</h2>
+
+    <div class="flow-timeline">
+        <div class="flow-item">
+            <div class="flow-item-title">Schedule Trigger — Inicio automático</div>
+            <div class="flow-item-desc">
+                El nodo Schedule de n8n dispara el flujo a la hora configurada. Soporta CRON
+                estándar, lo que permite programar la publicación en la franja horaria de mayor
+                actividad de la audiencia.
+            </div>
+        </div>
+
+        <div class="flow-item">
+            <div class="flow-item-title">Set Node — Contexto del día</div>
+            <div class="flow-item-desc">
+                Se inyectan variables dinámicas: fecha, tema del día, tono de comunicación
+                y cualquier parámetro que personalice el contenido. Esto permite variar
+                el mensaje cada día sin modificar el flujo.
+            </div>
+        </div>
+
+        <div class="flow-item">
+            <div class="flow-item-title">HTTP Request → OpenAI — Generación de texto</div>
+            <div class="flow-item-desc">
+                Una llamada HTTP con el prompt construido dinámicamente solicita al modelo LLM
+                el texto de la story. La respuesta se parsea en el siguiente nodo para extraer
+                titular y hashtags por separado.
+            </div>
+        </div>
+
+        <div class="flow-item">
+            <div class="flow-item-title">HTTP Request → API de Imagen — Creación visual</div>
+            <div class="flow-item-desc">
+                Con el texto como input, se construye un prompt de imagen y se llama a la API
+                generativa. La URL de la imagen resultante se almacena en el contexto del workflow.
+            </div>
+        </div>
+
+        <div class="flow-item">
+            <div class="flow-item-title">HTTP Request → Instagram Graph API — Publicación</div>
+            <div class="flow-item-desc">
+                Dos llamadas encadenadas: primero se crea el contenedor del media con la URL
+                de la imagen, y en segundo lugar se publica con el endpoint de publicación.
+                El token OAuth se gestiona de forma segura desde las credenciales de n8n.
+            </div>
+        </div>
+
+        <div class="flow-item">
+            <div class="flow-item-title">Google Sheets / Airtable — Log de ejecución</div>
+            <div class="flow-item-desc">
+                Cada publicación queda registrada con timestamp, ID del post publicado
+                y status de la llamada API. Permite auditar el histórico y detectar
+                fallos en tiempo real.
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════════════════ -->
+<footer>
+    <p>
+        Demo técnica · <strong>Stories on Autopilot</strong> ·
+        Construido con make, OpenAI y la Instagram Graph API
+    </p>
+    <p style="margin-top:6px;">
+        Esta automatización no puede probarse directamente en esta interfaz —
+        requiere credenciales activas de Meta Developer y una cuenta de Instagram Business.
+    </p>
+</footer>

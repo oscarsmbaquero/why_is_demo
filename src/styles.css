@@ -130,10 +130,13 @@ button:disabled {
 }
 
 html, body {
-  background-image: url('/assets/images/fondo5.jpg') !important;
-  background-size: cover !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+   background-image: url('/assets/images/fondo5.jpg') !important;
+  min-height: 100vh;
+
+  background-size: 100% auto; /* ancho completo, alto proporcional */
+  background-repeat: repeat-y; /* se repite en vertical */
+  background-position: top center;
+
   background-color: #111 !important;
 }
 
